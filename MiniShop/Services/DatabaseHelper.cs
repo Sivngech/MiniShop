@@ -5,15 +5,12 @@ namespace MiniShop.Services
 {
     public class DatabaseHelper
     {
-        // Replace 'SIVNGECH\SQLEXPRESS' if your server instance differs
         private static string connectionString = @"Server=SIVNGECH\SQLEXPRESS;Database=MiniShopDB;Trusted_Connection=True;TrustServerCertificate=True;";
 
         public static SqlConnection GetConnection()
         {
             return new SqlConnection(connectionString);
         }
-
-        // Method to fetch data (SELECT queries)
         public static DataTable ExecuteQuery(string query, SqlParameter[]? parameters = null)
         {
             using (SqlConnection conn = GetConnection())
@@ -32,8 +29,6 @@ namespace MiniShop.Services
                 }
             }
         }
-
-        // Method for INSERT, UPDATE, DELETE queries
         public static int ExecuteNonQuery(string query, SqlParameter[]? parameters = null)
         {
             using (SqlConnection conn = GetConnection())
@@ -45,6 +40,20 @@ namespace MiniShop.Services
 
                     conn.Open();
                     return cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        public static object? ExecuteScalar(string query, SqlParameter[]? parameters = null)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    if (parameters != null)
+                        cmd.Parameters.AddRange(parameters);
+
+                    conn.Open();
+                    return cmd.ExecuteScalar();
                 }
             }
         }

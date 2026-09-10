@@ -21,6 +21,7 @@ namespace MiniShop.Forms
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
 
@@ -46,10 +47,10 @@ namespace MiniShop.Forms
                     string fullName = dt.Rows[0]["FullName"].ToString();
                     MessageBox.Show($"Welcome back, {fullName}!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // TODO: Open MainDashboardForm here in Phase 3
-                    // MainDashboardForm dashboard = new MainDashboardForm();
-                    // dashboard.Show();
-                    // this.Hide();
+                    // Open MainDashboardForm and hide LoginForm
+                    MainDashboardForm dashboard = new MainDashboardForm();
+                    dashboard.Show();
+                    this.Hide();
                 }
                 else
                 {
@@ -60,6 +61,11 @@ namespace MiniShop.Forms
             {
                 MessageBox.Show("Database connection error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
