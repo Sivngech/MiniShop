@@ -16,6 +16,13 @@ namespace MiniShop.Forms
     public partial class MainDashboardForm : Form
     {
         private Form? activeForm = null;
+        private LoginForm? _loginForm;
+        
+        public MainDashboardForm(LoginForm loginForm)
+        {
+            InitializeComponent();
+            _loginForm = loginForm;
+        }
         public MainDashboardForm()
         {
             InitializeComponent();
@@ -38,17 +45,34 @@ namespace MiniShop.Forms
         }
         private void BtnProducts_Click(object sender, EventArgs e)
         {
+            if (activeForm != null)
+            {
+                activeForm.Close();
+                activeForm = null;
+            }
             //OpenChildForm(new ProductManagementForm(), "Product Management");
-            MessageBox.Show("product clicked");
+            lblTitle.Text = "Product Management";
         }
         private void btnCategories_Click(object sender, EventArgs e)
         {
+            if (activeForm != null)
+            {
+                activeForm.Close();
+                activeForm = null;
+            }
             // OpenChildForm(new CategoryForm(), "Category Management");
+            lblTitle.Text = "Categories Management";
         }
 
         private void btnCustomer_Click(object sender, EventArgs e)
         {
+            if (activeForm != null)
+            {
+                activeForm.Close();
+                activeForm = null;
+            }
             // OpenChildForm(new CustomerForm(), "Customer Management");
+            lblTitle.Text = "Customer Management";
         }
 
         private void MainDashboardForm_Load(object sender, EventArgs e)
@@ -70,6 +94,13 @@ namespace MiniShop.Forms
         private void btnSale_Click(object sender, EventArgs e)
         {
             // OpenChildForm(new SaleForm(), "POS/Sale Management");
+            if (activeForm != null)
+            {
+                activeForm.Close();
+                activeForm = null;
+            }
+            // OpenChildForm(new CustomerForm(), "Customer Management");
+            lblTitle.Text = "Sale/POS";
         }
         private void LoadDashboardSummary()
         {
@@ -109,9 +140,20 @@ namespace MiniShop.Forms
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            User.CurrentUser = null; 
-            LoginForm login = new LoginForm();
-            login.Show();
+            User.CurrentUser = null;
+
+            if (_loginForm != null)
+            {
+                _loginForm.SetLogoutMode(); // Reset login form to login mode
+                _loginForm.Show(); // Unhide original login form
+            }
+            else
+            {
+                LoginForm login = new LoginForm();
+                login.SetLoginMode();
+                login.Show();
+            }
+
             this.Close();
         }
     }
