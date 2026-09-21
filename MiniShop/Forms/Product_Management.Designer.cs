@@ -57,9 +57,9 @@
             label2.AutoSize = true;
             label2.Location = new Point(20, 60);
             label2.Name = "label2";
-            label2.Size = new Size(50, 20);
+            label2.Size = new Size(104, 20);
             label2.TabIndex = 1;
-            label2.Text = "label2";
+            label2.Text = "Product Name";
             // 
             // Product_Management
             // 
