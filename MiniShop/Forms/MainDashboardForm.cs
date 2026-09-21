@@ -38,7 +38,7 @@ namespace MiniShop.Forms
         }
         private void BtnProducts_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new ProductManagementForm(), "Product Management");
+            
             MessageBox.Show("product clicked");
         }
         private void btnCategories_Click(object sender, EventArgs e)
