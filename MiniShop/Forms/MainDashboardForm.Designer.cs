@@ -215,9 +215,9 @@
             lblTitle.ForeColor = Color.FromArgb(51, 51, 51);
             lblTitle.Location = new Point(3, 0);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(138, 32);
+            lblTitle.Size = new Size(252, 32);
             lblTitle.TabIndex = 0;
-            lblTitle.Text = "Dashboard";
+            lblTitle.Text = "Dashboard Overview";
             lblTitle.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // panelMainContent
