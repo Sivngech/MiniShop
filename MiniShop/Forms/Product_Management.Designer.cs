@@ -37,7 +37,6 @@
             label3 = new Label();
             txtProductID = new TextBox();
             label4 = new Label();
-            txtCategoryID = new TextBox();
             label5 = new Label();
             txtPrice = new TextBox();
             label6 = new Label();
@@ -46,6 +45,7 @@
             btnUpdate = new Button();
             btnDelete = new Button();
             dgvProducts = new DataGridView();
+            comCategory = new ComboBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProducts).BeginInit();
             SuspendLayout();
@@ -125,16 +125,9 @@
             label4.AutoSize = true;
             label4.Location = new Point(20, 159);
             label4.Name = "label4";
-            label4.Size = new Size(88, 20);
+            label4.Size = new Size(69, 20);
             label4.TabIndex = 5;
-            label4.Text = "Category ID";
-            // 
-            // txtCategoryID
-            // 
-            txtCategoryID.Location = new Point(130, 159);
-            txtCategoryID.Name = "txtCategoryID";
-            txtCategoryID.Size = new Size(125, 27);
-            txtCategoryID.TabIndex = 6;
+            label4.Text = "Category";
             // 
             // label5
             // 
@@ -213,11 +206,21 @@
             dgvProducts.Size = new Size(799, 188);
             dgvProducts.TabIndex = 14;
             // 
+            // comCategory
+            // 
+            comCategory.FormattingEnabled = true;
+            comCategory.Items.AddRange(new object[] { "Serum", "Suncreen", "Moisturizing cream", "Hair mask ", "Hair shampoo", "Hair conditioner ", "Sheet mask", "Steam cell", "lipstick", "cleansing oil ", "toner pad ", "toner " });
+            comCategory.Location = new Point(130, 166);
+            comCategory.Name = "comCategory";
+            comCategory.Size = new Size(151, 28);
+            comCategory.TabIndex = 15;
+            // 
             // Product_Management
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(comCategory);
             Controls.Add(dgvProducts);
             Controls.Add(btnDelete);
             Controls.Add(btnUpdate);
@@ -226,7 +229,6 @@
             Controls.Add(label6);
             Controls.Add(txtPrice);
             Controls.Add(label5);
-            Controls.Add(txtCategoryID);
             Controls.Add(label4);
             Controls.Add(txtProductID);
             Controls.Add(label3);
@@ -252,7 +254,6 @@
         private Label label3;
         private TextBox txtProductID;
         private Label label4;
-        private TextBox txtCategoryID;
         private Label label5;
         private TextBox txtPrice;
         private Label label6;
@@ -263,5 +264,6 @@
         private DataGridView dgvProducts;
         private TextBox txtSearch;
         private Button btnSearch;
+        private ComboBox comCategory;
     }
 }

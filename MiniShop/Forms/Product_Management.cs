@@ -22,6 +22,34 @@ namespace MiniShop.Forms
             this.Load += new System.EventHandler(this.Product_Management_Load);
         }
 
+        private void Product_Management_Load(object sender, EventArgs e)
+        {
+            LoadCategories();
+            LoadDataFromDatabase();
+        }
+
+        // --- LOAD CATEGORIES INTO COMBOBOX ---
+        private void LoadCategories()
+        {
+            try
+            {
+                string query = "SELECT CategoryID, CategoryName FROM Categories";
+                DataTable dt = DatabaseHelper.ExecuteQuery(query);
+
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    comCategory.DataSource = dt;
+                    comCategory.DisplayMember = "CategoryName"; // Name displayed in dropdown
+                    comCategory.ValueMember = "CategoryID";     // Underlying ID passed to database
+                    comCategory.SelectedIndex = -1;             // Start with no selection
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading categories: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         // --- SAVE BUTTON ---
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -29,11 +57,8 @@ namespace MiniShop.Forms
 
             try
             {
-                // Read Category ID from input; default to 1 if left empty
-                int categoryId = int.TryParse(txtCategoryID.Text.Trim(), out int cat) ? cat : 1;
-
-                // Ensure Category exists in Categories table to satisfy FOREIGN KEY constraint
-                EnsureCategoryExists(categoryId);
+                // Get selected CategoryID from ComboBox
+                int categoryId = Convert.ToInt32(comCategory.SelectedValue);
 
                 string query;
                 List<SqlParameter> parameters = new List<SqlParameter>
@@ -89,28 +114,45 @@ namespace MiniShop.Forms
         // --- UPDATE BUTTON ---
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtProductID.Text) || !int.TryParse(txtProductID.Text.Trim(), out int id))
+            int productId = 0;
+
+            // 1. Try to get ProductID from txtProductID textbox
+            if (!int.TryParse(txtProductID.Text.Trim(), out productId))
+            {
+                // 2. Fallback: Try to get ProductID directly from the selected DataGridView row
+                if (dgvProducts.CurrentRow != null && dgvProducts.CurrentRow.Index >= 0)
+                {
+                    var cellValue = dgvProducts.CurrentRow.Cells["ProductID"].Value;
+                    if (cellValue != null && cellValue != DBNull.Value)
+                    {
+                        productId = Convert.ToInt32(cellValue);
+                    }
+                }
+            }
+
+            // Check if a valid product ID was retrieved
+            if (productId <= 0)
             {
                 MessageBox.Show("Please select a product from the list to update.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
+            // Validate inputs (Product Name, Category, Price, Quantity)
             if (!ValidateInputs()) return;
 
             try
             {
-                int categoryId = int.TryParse(txtCategoryID.Text.Trim(), out int cat) ? cat : 1;
-                EnsureCategoryExists(categoryId);
+                int categoryId = Convert.ToInt32(comCategory.SelectedValue);
 
                 string query = "UPDATE Products SET ProductName = @Name, CategoryID = @CatID, Price = @Price, Quantity = @Qty WHERE ProductID = @ID";
 
                 SqlParameter[] parameters = new SqlParameter[]
                 {
-                    new SqlParameter("@ID", id),
-                    new SqlParameter("@Name", txtProductName.Text.Trim()),
-                    new SqlParameter("@CatID", categoryId),
-                    new SqlParameter("@Price", decimal.Parse(txtPrice.Text.Trim())),
-                    new SqlParameter("@Qty", int.Parse(txtQuantity.Text.Trim()))
+            new SqlParameter("@ID", productId),
+            new SqlParameter("@Name", txtProductName.Text.Trim()),
+            new SqlParameter("@CatID", categoryId),
+            new SqlParameter("@Price", decimal.Parse(txtPrice.Text.Trim())),
+            new SqlParameter("@Qty", int.Parse(txtQuantity.Text.Trim()))
                 };
 
                 int rowsAffected = DatabaseHelper.ExecuteNonQuery(query, parameters);
@@ -131,9 +173,26 @@ namespace MiniShop.Forms
         // --- DELETE BUTTON ---
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(txtProductID.Text.Trim(), out int id))
+            int productId = 0;
+
+            // 1. Try to parse from txtProductID textbox
+            if (!int.TryParse(txtProductID.Text.Trim(), out productId))
             {
-                DialogResult confirm = MessageBox.Show("Are you sure you want to delete this product?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                // 2. Fallback: Try to get ProductID from selected row in DataGridView
+                if (dgvProducts.CurrentRow != null && dgvProducts.CurrentRow.Index >= 0)
+                {
+                    var cellValue = dgvProducts.CurrentRow.Cells["ProductID"].Value;
+                    if (cellValue != null && cellValue != DBNull.Value)
+                    {
+                        productId = Convert.ToInt32(cellValue);
+                    }
+                }
+            }
+
+            // 3. If a valid ID is found, execute DELETE
+            if (productId > 0)
+            {
+                DialogResult confirm = MessageBox.Show($"Are you sure you want to delete product ID {productId}?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (confirm == DialogResult.Yes)
                 {
@@ -142,7 +201,7 @@ namespace MiniShop.Forms
                         string query = "DELETE FROM Products WHERE ProductID = @ID";
                         SqlParameter[] parameters = new SqlParameter[]
                         {
-                            new SqlParameter("@ID", id)
+                    new SqlParameter("@ID", productId)
                         };
 
                         int rowsAffected = DatabaseHelper.ExecuteNonQuery(query, parameters);
@@ -154,6 +213,18 @@ namespace MiniShop.Forms
                             ClearInputs();
                         }
                     }
+                    catch (SqlException ex)
+                    {
+                        // Foreign Key Constraint Handler (if product exists in SaleDetails table)
+                        if (ex.Number == 547)
+                        {
+                            MessageBox.Show("Cannot delete this product because it is linked to recorded sales details.", "Foreign Key Constraint", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Database error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                     catch (Exception ex)
                     {
                         MessageBox.Show("Error deleting product: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -162,7 +233,7 @@ namespace MiniShop.Forms
             }
             else
             {
-                MessageBox.Show("Please select a valid product to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a product from the table to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -174,36 +245,15 @@ namespace MiniShop.Forms
                 DataGridViewRow row = dgvProducts.Rows[e.RowIndex];
                 txtProductID.Text = row.Cells["ProductID"].Value.ToString();
                 txtProductName.Text = row.Cells["ProductName"].Value.ToString();
-                txtCategoryID.Text = row.Cells["CategoryID"].Value.ToString();
+
+                // Select matching Category in ComboBox
+                if (row.Cells["Category"].Value != null && row.Cells["Category"].Value != DBNull.Value)
+                {
+                    comCategory.SelectedValue = Convert.ToInt32(row.Cells["Category"].Value);
+                }
+
                 txtPrice.Text = row.Cells["Price"].Value.ToString();
                 txtQuantity.Text = row.Cells["Quantity"].Value.ToString();
-            }
-        }
-
-        // --- HELPER METHOD: AUTO-CREATE MISSING CATEGORY ---
-        private void EnsureCategoryExists(int categoryId)
-        {
-            string checkQuery = "SELECT COUNT(1) FROM Categories WHERE CategoryID = @CatID";
-            SqlParameter[] checkParams = new SqlParameter[] { new SqlParameter("@CatID", categoryId) };
-
-            DataTable resultTable = DatabaseHelper.ExecuteQuery(checkQuery, checkParams);
-            int exists = Convert.ToInt32(resultTable.Rows[0][0]);
-
-            if (exists == 0)
-            {
-                // Enables IDENTITY_INSERT temporarily to create the explicit CategoryID in dbo.Categories
-                string insertCategoryQuery = @"
-                    SET IDENTITY_INSERT Categories ON;
-                    INSERT INTO Categories (CategoryID, CategoryName) VALUES (@CatID, @CatName);
-                    SET IDENTITY_INSERT Categories OFF;";
-
-                SqlParameter[] insertParams = new SqlParameter[]
-                {
-                    new SqlParameter("@CatID", categoryId),
-                    new SqlParameter("@CatName", "Category " + categoryId)
-                };
-
-                DatabaseHelper.ExecuteNonQuery(insertCategoryQuery, insertParams);
             }
         }
 
@@ -212,7 +262,7 @@ namespace MiniShop.Forms
         {
             txtProductID.Clear();
             txtProductName.Clear();
-            txtCategoryID.Clear();
+            comCategory.SelectedIndex = -1;
             txtPrice.Clear();
             txtQuantity.Clear();
             txtProductName.Focus();
@@ -223,6 +273,12 @@ namespace MiniShop.Forms
             if (string.IsNullOrWhiteSpace(txtProductName.Text))
             {
                 MessageBox.Show("Please enter a Product Name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (comCategory.SelectedValue == null)
+            {
+                MessageBox.Show("Please select a Category.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
@@ -239,11 +295,6 @@ namespace MiniShop.Forms
             }
 
             return true;
-        }
-
-        private void Product_Management_Load(object sender, EventArgs e)
-        {
-            LoadDataFromDatabase();
         }
 
         private void LoadDataFromDatabase()
@@ -278,8 +329,8 @@ namespace MiniShop.Forms
 
                 SqlParameter[] parameters = new SqlParameter[]
                 {
-            new SqlParameter("@Search", "%" + keyword + "%"),
-            new SqlParameter("@ExactSearch", keyword)
+                    new SqlParameter("@Search", "%" + keyword + "%"),
+                    new SqlParameter("@ExactSearch", keyword)
                 };
 
                 DataTable dt = DatabaseHelper.ExecuteQuery(query, parameters);
@@ -297,6 +348,11 @@ namespace MiniShop.Forms
             {
                 LoadDataFromDatabase();
             }
+        }
+
+        private void comCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
