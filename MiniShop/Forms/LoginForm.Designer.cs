@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            lblTitle = new Label();
             label2 = new Label();
             label3 = new Label();
             txtUsername = new TextBox();
@@ -37,15 +37,15 @@
             button2 = new Button();
             SuspendLayout();
             // 
-            // label1
+            // lblTitle
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(277, 18);
-            label1.Name = "label1";
-            label1.Size = new Size(178, 41);
-            label1.TabIndex = 0;
-            label1.Text = "Login Form";
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTitle.Location = new Point(277, 18);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(178, 41);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "Login Form";
             // 
             // label2
             // 
@@ -112,7 +112,7 @@
             Controls.Add(txtUsername);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(lblTitle);
             Name = "LoginForm";
             Text = "LoginForm";
             ResumeLayout(false);
@@ -121,7 +121,7 @@
 
         #endregion
 
-        private Label label1;
+        private Label lblTitle;
         private Label label2;
         private Label label3;
         private TextBox txtUsername;
