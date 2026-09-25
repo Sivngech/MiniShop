@@ -63,6 +63,16 @@ namespace MiniShop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap home_icon_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("home-icon-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap minilogo {
             get {
                 object obj = ResourceManager.GetObject("minilogo", resourceCulture);
@@ -86,6 +96,16 @@ namespace MiniShop.Properties {
         internal static System.Drawing.Bitmap miniShopLogo_removebg_preview {
             get {
                 object obj = ResourceManager.GetObject("miniShopLogo-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap skincare_project_logo_removebg {
+            get {
+                object obj = ResourceManager.GetObject("skincare-project-logo-removebg", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

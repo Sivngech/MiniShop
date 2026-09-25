@@ -17,7 +17,7 @@ namespace MiniShop.Forms
     {
         private Form? activeForm = null;
         private LoginForm? _loginForm;
-        
+
         public MainDashboardForm(LoginForm loginForm)
         {
             InitializeComponent();
@@ -155,6 +155,16 @@ namespace MiniShop.Forms
             }
 
             this.Close();
+        }
+
+        private void lblRecentTitle_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
