@@ -5,7 +5,7 @@ namespace MiniShop.Services
 {
     public class DatabaseHelper
     {
-        private static string connectionString = @"Server=SIVNGECH\SQLEXPRESS;Database=MiniShopDB;Trusted_Connection=True;TrustServerCertificate=True;";
+        private static string connectionString = @"Server=DESKTOP-LLSNGTM\SQLEXPRESS;Database=MiniShopDB;Trusted_Connection=True;TrustServerCertificate=True;";
 
         public static SqlConnection GetConnection()
         {
