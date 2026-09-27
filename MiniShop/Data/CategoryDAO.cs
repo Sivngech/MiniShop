@@ -7,43 +7,65 @@ namespace MiniShop.Data
 {
     public class CategoryDAO
     {
-        // Fetch categories with total product counts for DataGridView
+        // 1. ទាញយក Categories ទាំងអស់ រួមទាំង Total Products និង Total Stock
         public DataTable GetAllCategories(string searchQuery = "")
         {
-            string query = @"SELECT 
-                                c.CategoryID AS [Category ID],
-                                c.CategoryName AS [Category Name],
-                                c.Description AS [Description],
-                                c.IsActive AS [Status],
-                                COUNT(p.ProductID) AS [Total Products]
-                            FROM Categories c
-                            LEFT JOIN Products p ON c.CategoryID = p.CategoryID";
+            string query = @"
+                SELECT 
+                    c.CategoryID AS [Category ID],
+                    c.CategoryName AS [Category Name],
+                    c.Description,
+                    c.IsActive AS [Status],
+                    COUNT(p.ProductID) AS [Total Products],
+                    ISNULL(SUM(p.Quantity), 0) AS [Total Stock]
+                FROM Categories c
+                LEFT JOIN Products p ON c.CategoryID = p.CategoryID
+                WHERE (@search = '' OR c.CategoryName LIKE @search OR c.Description LIKE @search)
+                GROUP BY c.CategoryID, c.CategoryName, c.Description, c.IsActive
+                ORDER BY c.CategoryID DESC";
 
-            SqlParameter[] parameters = null;
+            string searchPattern = string.IsNullOrWhiteSpace(searchQuery) ? "" : "%" + searchQuery.Trim() + "%";
 
-            if (!string.IsNullOrWhiteSpace(searchQuery))
+            SqlParameter[] parameters = new SqlParameter[]
             {
-                query += " WHERE c.CategoryName LIKE @Search OR c.Description LIKE @Search";
-                parameters = new SqlParameter[]
-                {
-                    new SqlParameter("@Search", "%" + searchQuery.Trim() + "%")
-                };
-            }
-
-            query += " GROUP BY c.CategoryID, c.CategoryName, c.Description, c.IsActive";
+                new SqlParameter("@search", searchPattern)
+            };
 
             return DatabaseHelper.ExecuteQuery(query, parameters);
         }
 
-        // Add Category using RadioButton Status
-        public bool AddCategory(string name, string description, bool isActive)
+        // 2. ពិនិត្យមើលឈ្មោះ Category ជាន់គ្នា (Duplicate Check)
+        public bool IsCategoryNameExists(string categoryName, int excludeId = 0)
         {
+            string query = "SELECT COUNT(*) FROM Categories WHERE LOWER(CategoryName) = LOWER(@Name) AND CategoryID != @ExcludeID";
+
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@Name", categoryName.Trim()),
+                new SqlParameter("@ExcludeID", excludeId)
+            };
+
+            object result = DatabaseHelper.ExecuteScalar(query, parameters);
+            return Convert.ToInt32(result) > 0;
+        }
+
+        // 3. បញ្ចូល Category ថ្មី
+        public bool AddCategory(string name, string description, bool isActive, out string errorMessage)
+        {
+            errorMessage = string.Empty;
+
+            if (IsCategoryNameExists(name))
+            {
+                errorMessage = "ឈ្មោះប្រភេទទំនិញ (Category Name) នេះមានរួចហើយ! មិនអាចបញ្ចូលជាន់គ្នាបានទេ។";
+                return false;
+            }
+
             string query = @"INSERT INTO Categories (CategoryName, Description, IsActive) 
                              VALUES (@Name, @Desc, @IsActive)";
 
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@Name", name.Trim()),
+                new SqlParameter("@Name", name?.Trim() ?? string.Empty),
                 new SqlParameter("@Desc", string.IsNullOrWhiteSpace(description) ? (object)DBNull.Value : description.Trim()),
                 new SqlParameter("@IsActive", isActive)
             };
@@ -51,9 +73,17 @@ namespace MiniShop.Data
             return DatabaseHelper.ExecuteNonQuery(query, parameters) > 0;
         }
 
-        // Update Category
-        public bool UpdateCategory(int id, string name, string description, bool isActive)
+        // 4. កែប្រែ Category
+        public bool UpdateCategory(int id, string name, string description, bool isActive, out string errorMessage)
         {
+            errorMessage = string.Empty;
+
+            if (IsCategoryNameExists(name, id))
+            {
+                errorMessage = "ឈ្មោះ Category នេះមានរួចហើយនៅក្នុង ID ផ្សេង!";
+                return false;
+            }
+
             string query = @"UPDATE Categories 
                              SET CategoryName = @Name, Description = @Desc, IsActive = @IsActive 
                              WHERE CategoryID = @ID";
@@ -61,7 +91,7 @@ namespace MiniShop.Data
             SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@ID", id),
-                new SqlParameter("@Name", name.Trim()),
+                new SqlParameter("@Name", name?.Trim() ?? string.Empty),
                 new SqlParameter("@Desc", string.IsNullOrWhiteSpace(description) ? (object)DBNull.Value : description.Trim()),
                 new SqlParameter("@IsActive", isActive)
             };
@@ -69,19 +99,19 @@ namespace MiniShop.Data
             return DatabaseHelper.ExecuteNonQuery(query, parameters) > 0;
         }
 
-        // Safe Delete check against Foreign Key constraints (Products, etc.)
+        // 5. លុប Category ជាមួយ Safe Check
         public bool DeleteCategory(int id, out string errorMessage)
         {
             errorMessage = string.Empty;
 
-            // Check if products exist under this category
             string checkQuery = "SELECT COUNT(*) FROM Products WHERE CategoryID = @ID";
             SqlParameter[] checkParams = { new SqlParameter("@ID", id) };
+
             DataTable dt = DatabaseHelper.ExecuteQuery(checkQuery, checkParams);
 
             if (dt.Rows.Count > 0 && Convert.ToInt32(dt.Rows[0][0]) > 0)
             {
-                errorMessage = "Cannot delete category: products are assigned to it.";
+                errorMessage = "មិនអាចលុប Category នេះបានទេ ព្រោះមាន Products កំពុងភ្ជាប់ជាមួយវា។";
                 return false;
             }
 

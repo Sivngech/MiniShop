@@ -1,4 +1,4 @@
-using MiniShop.Forms;
+﻿using MiniShop.Forms;
 
 namespace MiniShop
 {
@@ -13,8 +13,9 @@ namespace MiniShop
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            //Application.Run(new LoginForm());
-            Application.Run(new Product_Management());
+            Application.Run(new LoginForm());
+            Application.Run(new Category_Management());
+            Application.Run(new Product_Management());​
         }
     }
 }

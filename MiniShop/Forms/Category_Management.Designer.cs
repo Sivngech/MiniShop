@@ -34,44 +34,47 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
-            radioButton1 = new RadioButton();
-            radioButton2 = new RadioButton();
+            rbActive = new RadioButton();
+            rbInactive = new RadioButton();
             label6 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            button1 = new Button();
-            dataGridView1 = new DataGridView();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
+            txtCategoryID = new TextBox();
+            txtCategoryName = new TextBox();
+            txtDescription = new TextBox();
+            txtSearch = new TextBox();
+            btnSearch = new Button();
+            dgvCategories = new DataGridView();
+            btnAdd = new Button();
+            btnUpdate = new Button();
+            btnDelete = new Button();
+            btnClear = new Button();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvCategories).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.ActiveCaption;
+            panel1.BackColor = Color.LightPink;
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(-6, -5);
+            panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(814, 59);
+            panel1.Size = new Size(802, 55);
             panel1.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(18, 24);
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label1.ForeColor = Color.FromArgb(50, 50, 50);
+            label1.Location = new Point(18, 14);
             label1.Name = "label1";
-            label1.Size = new Size(161, 20);
+            label1.Size = new Size(224, 28);
             label1.TabIndex = 1;
             label1.Text = "Category Management";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 79);
+            label2.Location = new Point(22, 79);
             label2.Name = "label2";
             label2.Size = new Size(95, 20);
             label2.TabIndex = 2;
@@ -80,7 +83,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(12, 121);
+            label3.Location = new Point(22, 121);
             label3.Name = "label3";
             label3.Size = new Size(120, 20);
             label3.TabIndex = 3;
@@ -89,7 +92,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(15, 159);
+            label4.Location = new Point(22, 163);
             label4.Name = "label4";
             label4.Size = new Size(92, 20);
             label4.TabIndex = 4;
@@ -104,140 +107,165 @@
             label5.TabIndex = 5;
             label5.Text = "Search :";
             // 
-            // radioButton1
+            // rbActive
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(513, 128);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(71, 24);
-            radioButton1.TabIndex = 6;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Active";
-            radioButton1.UseVisualStyleBackColor = true;
+            rbActive.AutoSize = true;
+            rbActive.Checked = true;
+            rbActive.Location = new Point(500, 119);
+            rbActive.Name = "rbActive";
+            rbActive.Size = new Size(71, 24);
+            rbActive.TabIndex = 6;
+            rbActive.TabStop = true;
+            rbActive.Text = "Active";
+            rbActive.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rbInactive
             // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(622, 128);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(81, 24);
-            radioButton2.TabIndex = 7;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "Inactive";
-            radioButton2.UseVisualStyleBackColor = true;
+            rbInactive.AutoSize = true;
+            rbInactive.Location = new Point(590, 119);
+            rbInactive.Name = "rbInactive";
+            rbInactive.Size = new Size(81, 24);
+            rbInactive.TabIndex = 7;
+            rbInactive.Text = "Inactive";
+            rbInactive.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(415, 132);
+            label6.Location = new Point(415, 121);
             label6.Name = "label6";
             label6.Size = new Size(56, 20);
             label6.TabIndex = 8;
             label6.Text = "Status :";
             // 
-            // textBox1
+            // txtCategoryID
             // 
-            textBox1.Location = new Point(138, 79);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 27);
-            textBox1.TabIndex = 9;
+            txtCategoryID.BackColor = SystemColors.ControlLight;
+            txtCategoryID.Location = new Point(148, 76);
+            txtCategoryID.Name = "txtCategoryID";
+            txtCategoryID.ReadOnly = true;
+            txtCategoryID.Size = new Size(180, 27);
+            txtCategoryID.TabIndex = 9;
             // 
-            // textBox2
+            // txtCategoryName
             // 
-            textBox2.Location = new Point(138, 118);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(125, 27);
-            textBox2.TabIndex = 10;
+            txtCategoryName.Location = new Point(148, 118);
+            txtCategoryName.Name = "txtCategoryName";
+            txtCategoryName.Size = new Size(180, 27);
+            txtCategoryName.TabIndex = 10;
             // 
-            // textBox3
+            // txtDescription
             // 
-            textBox3.Location = new Point(138, 159);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(125, 27);
-            textBox3.TabIndex = 11;
+            txtDescription.Location = new Point(148, 160);
+            txtDescription.Name = "txtDescription";
+            txtDescription.Size = new Size(180, 27);
+            txtDescription.TabIndex = 11;
             // 
-            // textBox4
+            // txtSearch
             // 
-            textBox4.Location = new Point(481, 79);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(125, 27);
-            textBox4.TabIndex = 12;
+            txtSearch.Location = new Point(480, 76);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(180, 27);
+            txtSearch.TabIndex = 12;
             // 
-            // button1
+            // btnSearch
             // 
-            button1.Location = new Point(633, 79);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 13;
-            button1.Text = "Search";
-            button1.UseVisualStyleBackColor = true;
+            btnSearch.BackColor = Color.LightPink;
+            btnSearch.FlatStyle = FlatStyle.Flat;
+            btnSearch.Location = new Point(670, 75);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(94, 29);
+            btnSearch.TabIndex = 13;
+            btnSearch.Text = "Search";
+            btnSearch.UseVisualStyleBackColor = false;
             // 
-            // dataGridView1
+            // dgvCategories
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(-6, 226);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(794, 225);
-            dataGridView1.TabIndex = 14;
+            dgvCategories.AllowUserToAddRows = false;
+            dgvCategories.AllowUserToDeleteRows = false;
+            dgvCategories.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCategories.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCategories.Location = new Point(0, 250);
+            dgvCategories.Name = "dgvCategories";
+            dgvCategories.ReadOnly = true;
+            dgvCategories.RowHeadersWidth = 51;
+            dgvCategories.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvCategories.Size = new Size(802, 290);
+            dgvCategories.TabIndex = 14;
             // 
-            // button2
+            // btnAdd
             // 
-            button2.Location = new Point(368, 173);
-            button2.Name = "button2";
-            button2.Size = new Size(94, 29);
-            button2.TabIndex = 15;
-            button2.Text = "Add";
-            button2.UseVisualStyleBackColor = true;
+            btnAdd.BackColor = Color.LightPink;
+            btnAdd.FlatStyle = FlatStyle.Flat;
+            btnAdd.Location = new Point(350, 200);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(94, 29);
+            btnAdd.TabIndex = 15;
+            btnAdd.Text = "Add";
+            btnAdd.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // btnUpdate
             // 
-            button3.Location = new Point(490, 173);
-            button3.Name = "button3";
-            button3.Size = new Size(94, 29);
-            button3.TabIndex = 16;
-            button3.Text = "Update";
-            button3.UseVisualStyleBackColor = true;
+            btnUpdate.BackColor = Color.LightPink;
+            btnUpdate.FlatStyle = FlatStyle.Flat;
+            btnUpdate.Location = new Point(455, 200);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(94, 29);
+            btnUpdate.TabIndex = 16;
+            btnUpdate.Text = "Update";
+            btnUpdate.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // btnDelete
             // 
-            button4.Location = new Point(609, 173);
-            button4.Name = "button4";
-            button4.Size = new Size(94, 29);
-            button4.TabIndex = 17;
-            button4.Text = "Delete";
-            button4.UseVisualStyleBackColor = true;
+            btnDelete.BackColor = Color.LightPink;
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.Location = new Point(560, 200);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(94, 29);
+            btnDelete.TabIndex = 17;
+            btnDelete.Text = "Delete";
+            btnDelete.UseVisualStyleBackColor = false;
+            // 
+            // btnClear
+            // 
+            btnClear.BackColor = Color.LightPink;
+            btnClear.FlatStyle = FlatStyle.Flat;
+            btnClear.Location = new Point(665, 200);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(94, 29);
+            btnClear.TabIndex = 18;
+            btnClear.Text = "Clear";
+            btnClear.UseVisualStyleBackColor = false;
             // 
             // Category_Management
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(dataGridView1);
-            Controls.Add(button1);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            ClientSize = new Size(802, 543);
+            Controls.Add(btnClear);
+            Controls.Add(btnDelete);
+            Controls.Add(btnUpdate);
+            Controls.Add(btnAdd);
+            Controls.Add(dgvCategories);
+            Controls.Add(btnSearch);
+            Controls.Add(txtSearch);
+            Controls.Add(txtDescription);
+            Controls.Add(txtCategoryName);
+            Controls.Add(txtCategoryID);
             Controls.Add(label6);
-            Controls.Add(radioButton2);
-            Controls.Add(radioButton1);
+            Controls.Add(rbInactive);
+            Controls.Add(rbActive);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(panel1);
             Name = "Category_Management";
-            Text = "Category_Management";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Category Management";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvCategories).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -250,17 +278,18 @@
         private Label label3;
         private Label label4;
         private Label label5;
-        private RadioButton radioButton1;
-        private RadioButton radioButton2;
+        private RadioButton rbActive;
+        private RadioButton rbInactive;
         private Label label6;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private Button button1;
-        private DataGridView dataGridView1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
+        private TextBox txtCategoryID;
+        private TextBox txtCategoryName;
+        private TextBox txtDescription;
+        private TextBox txtSearch;
+        private Button btnSearch;
+        private DataGridView dgvCategories;
+        private Button btnAdd;
+        private Button btnUpdate;
+        private Button btnDelete;
+        private Button btnClear;
     }
 }
