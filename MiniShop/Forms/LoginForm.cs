@@ -1,22 +1,15 @@
-﻿using MiniShop.Services;
+﻿using MiniShop.Models;
+using MiniShop.Services;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System;
 using System.Windows.Forms;
 
 namespace MiniShop.Forms
 {
     public partial class LoginForm : Form
     {
-        // Tracks state so clicking Logout doesn't trigger the SQL login
+        // Tracks state so clicking Logout doesn't trigger SQL login
         private bool isLogoutMode = false;
 
         public LoginForm()
@@ -24,24 +17,20 @@ namespace MiniShop.Forms
             InitializeComponent();
         }
 
-        // Called when opening form from Dashboard Logout button
         public void SetLogoutMode()
         {
             isLogoutMode = true;
+            User.CurrentUser = null; // Clear user session on logout
 
-            // 1. Change Window Bar Title
             this.Text = "Logout Form";
 
-            // 2. Change Big Header Text (Change 'label1' if your designer label is named differently)
             if (this.Controls.Find("label1", true).Length > 0)
             {
                 this.Controls.Find("label1", true)[0].Text = "Logout Form";
             }
 
-            // 3. Change Button Text
             btnLogin.Text = "Logout";
 
-            // Disable input fields while in logout mode
             txtUsername.Enabled = false;
             txtPassword.Enabled = false;
         }
@@ -67,15 +56,13 @@ namespace MiniShop.Forms
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            // IF LOGOUT MODE: Just reset to Login state and exit
             if (isLogoutMode || btnLogin.Text == "Logout")
             {
                 SetLoginMode();
                 MessageBox.Show("You have successfully logged out.", "Logged Out", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return; // STOP EXECUTION (Prevents dashboard from re-opening)
+                return;
             }
 
-            // IF LOGIN MODE: Process SQL Login
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
 
@@ -98,10 +85,19 @@ namespace MiniShop.Forms
 
                 if (dt.Rows.Count > 0)
                 {
-                    string fullName = dt.Rows[0]["FullName"].ToString();
-                    MessageBox.Show($"Welcome back, {fullName}!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DataRow row = dt.Rows[0];
 
-                    // Pass this form to Dashboard
+                    // Set global session
+                    User.CurrentUser = new User
+                    {
+                        UserID = Convert.ToInt32(row["UserID"]),
+                        Username = username,
+                        FullName = row["FullName"].ToString() ?? string.Empty,
+                        Role = row["Role"].ToString() ?? string.Empty
+                    };
+
+                    MessageBox.Show($"Welcome back, {User.CurrentUser.FullName}!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     MainDashboardForm dashboard = new MainDashboardForm(this);
                     dashboard.Show();
                     this.Hide();
@@ -122,14 +118,8 @@ namespace MiniShop.Forms
             Application.Exit();
         }
 
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
+        private void LoginForm_Load(object sender, EventArgs e) { }
 
-        }
-
-        private void lbl_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void lbl_Click(object sender, EventArgs e) { }
     }
 }
