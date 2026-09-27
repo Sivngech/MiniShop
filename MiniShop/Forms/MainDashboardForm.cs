@@ -31,16 +31,22 @@ namespace MiniShop.Forms
         }
         private void OpenChildForm(Form childForm, string title, Button activeNavButton)
         {
+            // Close current active child form if exists
             if (activeForm != null)
             {
                 activeForm.Close();
             }
+
             activeForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
-            pnlSummary.Visible = false;
 
+            // Hide summary panel and send it to back
+            pnlSummary.Visible = false;
+            pnlSummary.SendToBack();
+
+            // Add and show child form inside container
             panelMainContent.Controls.Add(childForm);
             panelMainContent.Tag = childForm;
             childForm.BringToFront();
@@ -48,7 +54,6 @@ namespace MiniShop.Forms
 
             lblTitle.Text = title;
             SetActiveNavButton(activeNavButton);
-
         }
         private void SwitchToDashboardView()
         {
@@ -59,42 +64,26 @@ namespace MiniShop.Forms
             }
 
             pnlSummary.Visible = true;
+            pnlSummary.BringToFront();
             lblTitle.Text = "Dashboard Overview";
             SetActiveNavButton(btnDashboard);
             LoadDashboardSummary();
         }
         private void BtnProducts_Click(object sender, EventArgs e)
         {
-            //if (activeForm != null)
-            //{
-            //    activeForm.Close();
-            //    activeForm = null;
-            //}
             OpenChildForm(new Product_Management(), "Product Management", BtnProducts);
             SetActiveNavButton(BtnProducts);
 
         }
         private void btnCategories_Click(object sender, EventArgs e)
         {
-            //if (activeForm != null)
-            //{
-            //    activeForm.Close();
-            //    activeForm = null;
-            //}
-            // OpenChildForm(new CategoryForm(), "Category Management");
-            lblTitle.Text = "Categories Management";
+            OpenChildForm(new Category_Management(), "Category Management", btnCategories);
             SetActiveNavButton(btnCategories);
         }
 
         private void btnCustomer_Click(object sender, EventArgs e)
         {
-            //if (activeForm != null)
-            //{
-            //    activeForm.Close();
-            //    activeForm = null;
-            //}
-            // OpenChildForm(new CustomerForm(), "Customer Management");
-            lblTitle.Text = "Customer Management";
+            //OpenChildForm(new CustomerForm(), "Customer Management", btnCustomer);
             SetActiveNavButton(btnCustomer);
         }
 
@@ -123,7 +112,6 @@ namespace MiniShop.Forms
         private void btnSale_Click(object sender, EventArgs e)
         {
             OpenChildForm(new pos_sale(), "POS/Sale Management", btnSale);
-            //lblTitle.Text = "Sale/POS";
             SetActiveNavButton(btnSale);
         }
         private void LoadDashboardSummary()
@@ -152,14 +140,9 @@ namespace MiniShop.Forms
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            //if (activeForm != null)
-            //{
-            //    activeForm.Close();
-            //    activeForm = null;
-            //}
-
             //lblTitle.Text = "Dashboard Overview";
             //LoadDashboardSummary();
+            OpenChildForm(new MainDashboardForm(), "Dashboard Overview", btnDashboard);
             SetActiveNavButton(btnDashboard);
         }
 
