@@ -28,93 +28,242 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            rbActive = new RadioButton();
-            rbInactive = new RadioButton();
-            label6 = new Label();
-            txtCategoryID = new TextBox();
-            txtCategoryName = new TextBox();
-            txtDescription = new TextBox();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            pnHeader = new Panel();
+            lblTitle = new Label();
+            pnSearchArea = new FlowLayoutPanel();
+            lblSearch = new Label();
             txtSearch = new TextBox();
             btnSearch = new Button();
-            dgvCategories = new DataGridView();
+            pnInputCard = new Panel();
+            tlpInputs = new TableLayoutPanel();
+            lblCategoryID = new Label();
+            txtCategoryID = new TextBox();
+            lblDescription = new Label();
+            txtDescription = new TextBox();
+            lblCategoryName = new Label();
+            txtCategoryName = new TextBox();
+            lblStatus = new Label();
+            flpStatus = new FlowLayoutPanel();
+            rbActive = new RadioButton();
+            rbInactive = new RadioButton();
+            flpActions = new FlowLayoutPanel();
             btnAdd = new Button();
             btnUpdate = new Button();
             btnDelete = new Button();
             btnClear = new Button();
-            panel1.SuspendLayout();
+            pnGridContainer = new Panel();
+            dgvCategories = new DataGridView();
+            pnHeader.SuspendLayout();
+            pnSearchArea.SuspendLayout();
+            pnInputCard.SuspendLayout();
+            tlpInputs.SuspendLayout();
+            flpStatus.SuspendLayout();
+            flpActions.SuspendLayout();
+            pnGridContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCategories).BeginInit();
             SuspendLayout();
             // 
-            // panel1
+            // pnHeader
             // 
-            panel1.BackColor = Color.LightPink;
-            panel1.Controls.Add(label1);
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(802, 55);
-            panel1.TabIndex = 0;
+            pnHeader.Controls.Add(lblTitle);
+            pnHeader.Controls.Add(pnSearchArea);
+            pnHeader.Dock = DockStyle.Top;
+            pnHeader.Location = new Point(20, 20);
+            pnHeader.Name = "pnHeader";
+            pnHeader.Size = new Size(942, 60);
+            pnHeader.TabIndex = 2;
             // 
-            // label1
+            // lblTitle
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label1.ForeColor = Color.FromArgb(50, 50, 50);
-            label1.Location = new Point(18, 14);
-            label1.Name = "label1";
-            label1.Size = new Size(224, 28);
-            label1.TabIndex = 1;
-            label1.Text = "Category Management";
+            lblTitle.AutoSize = true;
+            lblTitle.Dock = DockStyle.Left;
+            lblTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTitle.ForeColor = Color.FromArgb(232, 82, 133);
+            lblTitle.Location = new Point(0, 0);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(314, 37);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "Category Management";
             // 
-            // label2
+            // pnSearchArea
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(22, 79);
-            label2.Name = "label2";
-            label2.Size = new Size(95, 20);
-            label2.TabIndex = 2;
-            label2.Text = "Category ID :";
+            pnSearchArea.Controls.Add(lblSearch);
+            pnSearchArea.Controls.Add(txtSearch);
+            pnSearchArea.Controls.Add(btnSearch);
+            pnSearchArea.Dock = DockStyle.Right;
+            pnSearchArea.Location = new Point(462, 0);
+            pnSearchArea.Name = "pnSearchArea";
+            pnSearchArea.Size = new Size(480, 60);
+            pnSearchArea.TabIndex = 1;
             // 
-            // label3
+            // lblSearch
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(22, 121);
-            label3.Name = "label3";
-            label3.Size = new Size(120, 20);
-            label3.TabIndex = 3;
-            label3.Text = "Category Name :";
+            lblSearch.AutoSize = true;
+            lblSearch.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblSearch.ForeColor = Color.FromArgb(232, 82, 133);
+            lblSearch.Location = new Point(0, 8);
+            lblSearch.Margin = new Padding(0, 8, 8, 0);
+            lblSearch.Name = "lblSearch";
+            lblSearch.Size = new Size(59, 20);
+            lblSearch.TabIndex = 0;
+            lblSearch.Text = "Search:";
             // 
-            // label4
+            // txtSearch
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(22, 163);
-            label4.Name = "label4";
-            label4.Size = new Size(92, 20);
-            label4.TabIndex = 4;
-            label4.Text = "Description :";
+            txtSearch.Font = new Font("Segoe UI", 10F);
+            txtSearch.Location = new Point(67, 3);
+            txtSearch.Margin = new Padding(0, 3, 8, 0);
+            txtSearch.Name = "txtSearch";
+            txtSearch.PlaceholderText = "Search by name...";
+            txtSearch.Size = new Size(240, 30);
+            txtSearch.TabIndex = 1;
             // 
-            // label5
+            // btnSearch
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(415, 79);
-            label5.Name = "label5";
-            label5.Size = new Size(60, 20);
-            label5.TabIndex = 5;
-            label5.Text = "Search :";
+            btnSearch.BackColor = Color.FromArgb(232, 82, 133);
+            btnSearch.FlatAppearance.BorderSize = 0;
+            btnSearch.FlatStyle = FlatStyle.Flat;
+            btnSearch.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnSearch.ForeColor = Color.White;
+            btnSearch.Location = new Point(315, 2);
+            btnSearch.Margin = new Padding(0, 2, 0, 0);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(95, 32);
+            btnSearch.TabIndex = 2;
+            btnSearch.Text = "Search";
+            btnSearch.UseVisualStyleBackColor = false;
+            // 
+            // pnInputCard
+            // 
+            pnInputCard.BackColor = Color.White;
+            pnInputCard.Controls.Add(tlpInputs);
+            pnInputCard.Controls.Add(flpActions);
+            pnInputCard.Dock = DockStyle.Top;
+            pnInputCard.Location = new Point(20, 80);
+            pnInputCard.Name = "pnInputCard";
+            pnInputCard.Padding = new Padding(15, 15, 15, 10);
+            pnInputCard.Size = new Size(942, 185);
+            pnInputCard.TabIndex = 1;
+            // 
+            // tlpInputs
+            // 
+            tlpInputs.ColumnCount = 4;
+            tlpInputs.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 130F));
+            tlpInputs.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tlpInputs.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 110F));
+            tlpInputs.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tlpInputs.Controls.Add(lblCategoryID, 0, 0);
+            tlpInputs.Controls.Add(txtCategoryID, 1, 0);
+            tlpInputs.Controls.Add(lblDescription, 2, 0);
+            tlpInputs.Controls.Add(txtDescription, 3, 0);
+            tlpInputs.Controls.Add(lblCategoryName, 0, 1);
+            tlpInputs.Controls.Add(txtCategoryName, 1, 1);
+            tlpInputs.Controls.Add(lblStatus, 2, 1);
+            tlpInputs.Controls.Add(flpStatus, 3, 1);
+            tlpInputs.Dock = DockStyle.Top;
+            tlpInputs.Location = new Point(15, 15);
+            tlpInputs.Name = "tlpInputs";
+            tlpInputs.RowCount = 2;
+            tlpInputs.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tlpInputs.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tlpInputs.Size = new Size(912, 90);
+            tlpInputs.TabIndex = 0;
+            // 
+            // lblCategoryID
+            // 
+            lblCategoryID.Anchor = AnchorStyles.Left;
+            lblCategoryID.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblCategoryID.ForeColor = Color.FromArgb(232, 82, 133);
+            lblCategoryID.Location = new Point(3, 11);
+            lblCategoryID.Name = "lblCategoryID";
+            lblCategoryID.Size = new Size(100, 23);
+            lblCategoryID.TabIndex = 0;
+            lblCategoryID.Text = "Category ID:";
+            // 
+            // txtCategoryID
+            // 
+            txtCategoryID.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txtCategoryID.BackColor = Color.FromArgb(252, 228, 236);
+            txtCategoryID.Location = new Point(133, 9);
+            txtCategoryID.Name = "txtCategoryID";
+            txtCategoryID.ReadOnly = true;
+            txtCategoryID.Size = new Size(330, 27);
+            txtCategoryID.TabIndex = 1;
+            // 
+            // lblDescription
+            // 
+            lblDescription.Anchor = AnchorStyles.Left;
+            lblDescription.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblDescription.ForeColor = Color.FromArgb(232, 82, 133);
+            lblDescription.Location = new Point(469, 11);
+            lblDescription.Name = "lblDescription";
+            lblDescription.Size = new Size(100, 23);
+            lblDescription.TabIndex = 2;
+            lblDescription.Text = "Description:";
+            // 
+            // txtDescription
+            // 
+            txtDescription.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txtDescription.Location = new Point(579, 9);
+            txtDescription.Name = "txtDescription";
+            txtDescription.Size = new Size(330, 27);
+            txtDescription.TabIndex = 3;
+            // 
+            // lblCategoryName
+            // 
+            lblCategoryName.Anchor = AnchorStyles.Left;
+            lblCategoryName.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblCategoryName.ForeColor = Color.FromArgb(232, 82, 133);
+            lblCategoryName.Location = new Point(3, 56);
+            lblCategoryName.Name = "lblCategoryName";
+            lblCategoryName.Size = new Size(100, 23);
+            lblCategoryName.TabIndex = 4;
+            lblCategoryName.Text = "Category Name:";
+            // 
+            // txtCategoryName
+            // 
+            txtCategoryName.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txtCategoryName.Location = new Point(133, 54);
+            txtCategoryName.Name = "txtCategoryName";
+            txtCategoryName.Size = new Size(330, 27);
+            txtCategoryName.TabIndex = 5;
+            // 
+            // lblStatus
+            // 
+            lblStatus.Anchor = AnchorStyles.Left;
+            lblStatus.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblStatus.ForeColor = Color.FromArgb(232, 82, 133);
+            lblStatus.Location = new Point(469, 56);
+            lblStatus.Name = "lblStatus";
+            lblStatus.Size = new Size(100, 23);
+            lblStatus.TabIndex = 6;
+            lblStatus.Text = "Status:";
+            // 
+            // flpStatus
+            // 
+            flpStatus.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            flpStatus.Controls.Add(rbActive);
+            flpStatus.Controls.Add(rbInactive);
+            flpStatus.Location = new Point(576, 50);
+            flpStatus.Margin = new Padding(0);
+            flpStatus.Name = "flpStatus";
+            flpStatus.Size = new Size(336, 35);
+            flpStatus.TabIndex = 7;
             // 
             // rbActive
             // 
             rbActive.AutoSize = true;
             rbActive.Checked = true;
-            rbActive.Location = new Point(500, 119);
+            rbActive.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            rbActive.ForeColor = Color.FromArgb(64, 64, 64);
+            rbActive.Location = new Point(0, 8);
+            rbActive.Margin = new Padding(0, 8, 15, 0);
             rbActive.Name = "rbActive";
-            rbActive.Size = new Size(71, 24);
-            rbActive.TabIndex = 6;
+            rbActive.Size = new Size(74, 24);
+            rbActive.TabIndex = 0;
             rbActive.TabStop = true;
             rbActive.Text = "Active";
             rbActive.UseVisualStyleBackColor = true;
@@ -122,174 +271,199 @@
             // rbInactive
             // 
             rbInactive.AutoSize = true;
-            rbInactive.Location = new Point(590, 119);
+            rbInactive.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            rbInactive.ForeColor = Color.FromArgb(64, 64, 64);
+            rbInactive.Location = new Point(89, 8);
+            rbInactive.Margin = new Padding(0, 8, 0, 0);
             rbInactive.Name = "rbInactive";
-            rbInactive.Size = new Size(81, 24);
-            rbInactive.TabIndex = 7;
+            rbInactive.Size = new Size(85, 24);
+            rbInactive.TabIndex = 1;
             rbInactive.Text = "Inactive";
             rbInactive.UseVisualStyleBackColor = true;
             // 
-            // label6
+            // flpActions
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(415, 121);
-            label6.Name = "label6";
-            label6.Size = new Size(56, 20);
-            label6.TabIndex = 8;
-            label6.Text = "Status :";
-            // 
-            // txtCategoryID
-            // 
-            txtCategoryID.BackColor = SystemColors.ControlLight;
-            txtCategoryID.Location = new Point(148, 76);
-            txtCategoryID.Name = "txtCategoryID";
-            txtCategoryID.ReadOnly = true;
-            txtCategoryID.Size = new Size(180, 27);
-            txtCategoryID.TabIndex = 9;
-            // 
-            // txtCategoryName
-            // 
-            txtCategoryName.Location = new Point(148, 118);
-            txtCategoryName.Name = "txtCategoryName";
-            txtCategoryName.Size = new Size(180, 27);
-            txtCategoryName.TabIndex = 10;
-            // 
-            // txtDescription
-            // 
-            txtDescription.Location = new Point(148, 160);
-            txtDescription.Name = "txtDescription";
-            txtDescription.Size = new Size(180, 27);
-            txtDescription.TabIndex = 11;
-            // 
-            // txtSearch
-            // 
-            txtSearch.Location = new Point(480, 76);
-            txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(180, 27);
-            txtSearch.TabIndex = 12;
-            // 
-            // btnSearch
-            // 
-            btnSearch.BackColor = Color.LightPink;
-            btnSearch.FlatStyle = FlatStyle.Flat;
-            btnSearch.Location = new Point(670, 75);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(94, 29);
-            btnSearch.TabIndex = 13;
-            btnSearch.Text = "Search";
-            btnSearch.UseVisualStyleBackColor = false;
-            // 
-            // dgvCategories
-            // 
-            dgvCategories.AllowUserToAddRows = false;
-            dgvCategories.AllowUserToDeleteRows = false;
-            dgvCategories.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvCategories.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCategories.Location = new Point(0, 250);
-            dgvCategories.Name = "dgvCategories";
-            dgvCategories.ReadOnly = true;
-            dgvCategories.RowHeadersWidth = 51;
-            dgvCategories.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCategories.Size = new Size(802, 290);
-            dgvCategories.TabIndex = 14;
+            flpActions.Controls.Add(btnAdd);
+            flpActions.Controls.Add(btnUpdate);
+            flpActions.Controls.Add(btnDelete);
+            flpActions.Controls.Add(btnClear);
+            flpActions.Dock = DockStyle.Bottom;
+            flpActions.Location = new Point(15, 130);
+            flpActions.Name = "flpActions";
+            flpActions.Padding = new Padding(0, 10, 0, 0);
+            flpActions.Size = new Size(912, 45);
+            flpActions.TabIndex = 1;
             // 
             // btnAdd
             // 
-            btnAdd.BackColor = Color.LightPink;
+            btnAdd.BackColor = Color.FromArgb(232, 82, 133);
+            btnAdd.FlatAppearance.BorderSize = 0;
             btnAdd.FlatStyle = FlatStyle.Flat;
-            btnAdd.Location = new Point(350, 200);
+            btnAdd.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnAdd.ForeColor = Color.White;
+            btnAdd.Location = new Point(0, 10);
+            btnAdd.Margin = new Padding(0, 0, 10, 0);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(94, 29);
-            btnAdd.TabIndex = 15;
-            btnAdd.Text = "Add";
+            btnAdd.Size = new Size(95, 34);
+            btnAdd.TabIndex = 0;
+            btnAdd.Text = "+ Add";
             btnAdd.UseVisualStyleBackColor = false;
             // 
             // btnUpdate
             // 
-            btnUpdate.BackColor = Color.LightPink;
+            btnUpdate.BackColor = Color.FromArgb(216, 27, 96);
+            btnUpdate.FlatAppearance.BorderSize = 0;
             btnUpdate.FlatStyle = FlatStyle.Flat;
-            btnUpdate.Location = new Point(455, 200);
+            btnUpdate.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnUpdate.ForeColor = Color.White;
+            btnUpdate.Location = new Point(105, 10);
+            btnUpdate.Margin = new Padding(0, 0, 10, 0);
             btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(94, 29);
-            btnUpdate.TabIndex = 16;
+            btnUpdate.Size = new Size(95, 34);
+            btnUpdate.TabIndex = 1;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = false;
             // 
             // btnDelete
             // 
-            btnDelete.BackColor = Color.LightPink;
+            btnDelete.BackColor = Color.FromArgb(244, 114, 182);
+            btnDelete.FlatAppearance.BorderSize = 0;
             btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.Location = new Point(560, 200);
+            btnDelete.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnDelete.ForeColor = Color.White;
+            btnDelete.Location = new Point(210, 10);
+            btnDelete.Margin = new Padding(0, 0, 10, 0);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(94, 29);
-            btnDelete.TabIndex = 17;
+            btnDelete.Size = new Size(95, 34);
+            btnDelete.TabIndex = 2;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = false;
             // 
             // btnClear
             // 
-            btnClear.BackColor = Color.LightPink;
+            btnClear.BackColor = Color.FromArgb(252, 228, 236);
+            btnClear.FlatAppearance.BorderColor = Color.FromArgb(248, 187, 208);
             btnClear.FlatStyle = FlatStyle.Flat;
-            btnClear.Location = new Point(665, 200);
+            btnClear.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnClear.ForeColor = Color.FromArgb(232, 82, 133);
+            btnClear.Location = new Point(315, 10);
+            btnClear.Margin = new Padding(0, 0, 10, 0);
             btnClear.Name = "btnClear";
-            btnClear.Size = new Size(94, 29);
-            btnClear.TabIndex = 18;
+            btnClear.Size = new Size(95, 34);
+            btnClear.TabIndex = 3;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = false;
+            // 
+            // pnGridContainer
+            // 
+            pnGridContainer.Controls.Add(dgvCategories);
+            pnGridContainer.Dock = DockStyle.Fill;
+            pnGridContainer.Location = new Point(20, 265);
+            pnGridContainer.Name = "pnGridContainer";
+            pnGridContainer.Padding = new Padding(0, 15, 0, 0);
+            pnGridContainer.Size = new Size(942, 368);
+            pnGridContainer.TabIndex = 0;
+            // 
+            // dgvCategories
+            // 
+            dgvCategories.AllowUserToAddRows = false;
+            dgvCategories.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(253, 242, 248);
+            dgvCategories.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dgvCategories.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCategories.BackgroundColor = Color.White;
+            dgvCategories.BorderStyle = BorderStyle.None;
+            dgvCategories.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvCategories.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(252, 228, 236);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(232, 82, 133);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(252, 228, 236);
+            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(232, 82, 133);
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvCategories.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dgvCategories.ColumnHeadersHeight = 40;
+            dgvCategories.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(64, 64, 64);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(248, 187, 208);
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgvCategories.DefaultCellStyle = dataGridViewCellStyle3;
+            dgvCategories.Dock = DockStyle.Fill;
+            dgvCategories.EnableHeadersVisualStyles = false;
+            dgvCategories.GridColor = Color.FromArgb(248, 187, 208);
+            dgvCategories.Location = new Point(0, 15);
+            dgvCategories.Name = "dgvCategories";
+            dgvCategories.ReadOnly = true;
+            dgvCategories.RowHeadersVisible = false;
+            dgvCategories.RowHeadersWidth = 51;
+            dgvCategories.RowTemplate.Height = 35;
+            dgvCategories.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvCategories.Size = new Size(942, 353);
+            dgvCategories.TabIndex = 0;
             // 
             // Category_Management
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(802, 543);
-            Controls.Add(btnClear);
-            Controls.Add(btnDelete);
-            Controls.Add(btnUpdate);
-            Controls.Add(btnAdd);
-            Controls.Add(dgvCategories);
-            Controls.Add(btnSearch);
-            Controls.Add(txtSearch);
-            Controls.Add(txtDescription);
-            Controls.Add(txtCategoryName);
-            Controls.Add(txtCategoryID);
-            Controls.Add(label6);
-            Controls.Add(rbInactive);
-            Controls.Add(rbActive);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(panel1);
+            BackColor = Color.FromArgb(253, 242, 248);
+            ClientSize = new Size(982, 653);
+            Controls.Add(pnGridContainer);
+            Controls.Add(pnInputCard);
+            Controls.Add(pnHeader);
+            Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "Category_Management";
+            Padding = new Padding(20);
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Category Management";
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            pnHeader.ResumeLayout(false);
+            pnHeader.PerformLayout();
+            pnSearchArea.ResumeLayout(false);
+            pnSearchArea.PerformLayout();
+            pnInputCard.ResumeLayout(false);
+            tlpInputs.ResumeLayout(false);
+            tlpInputs.PerformLayout();
+            flpStatus.ResumeLayout(false);
+            flpStatus.PerformLayout();
+            flpActions.ResumeLayout(false);
+            pnGridContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvCategories).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private Panel panel1;
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Label label5;
-        private RadioButton rbActive;
-        private RadioButton rbInactive;
-        private Label label6;
-        private TextBox txtCategoryID;
-        private TextBox txtCategoryName;
-        private TextBox txtDescription;
+        private Panel pnHeader;
+        private Label lblTitle;
+        private FlowLayoutPanel pnSearchArea;
+        private Label lblSearch;
         private TextBox txtSearch;
         private Button btnSearch;
-        private DataGridView dgvCategories;
+
+        private Panel pnInputCard;
+        private TableLayoutPanel tlpInputs;
+        private Label lblCategoryID;
+        private TextBox txtCategoryID;
+        private Label lblCategoryName;
+        private TextBox txtCategoryName;
+        private Label lblDescription;
+        private TextBox txtDescription;
+        private Label lblStatus;
+        private FlowLayoutPanel flpStatus;
+        private RadioButton rbActive;
+        private RadioButton rbInactive;
+
+        private FlowLayoutPanel flpActions;
         private Button btnAdd;
         private Button btnUpdate;
         private Button btnDelete;
         private Button btnClear;
+
+        private Panel pnGridContainer;
+        private DataGridView dgvCategories;
     }
 }

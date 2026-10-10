@@ -14,6 +14,10 @@ namespace MiniShop.Models
         public string CategoryName { get; set; } = string.Empty;
         public decimal Price { get; set; }
         public int Quantity { get; set; }
+        public string ImagePath { get; set; } = string.Empty;
+
+        // DataGridView binds this to render the image thumbnail automatically
+        public Image? ProductImage { get; set; }
         public Product() { }
         public Product(int productID, string productName, int categoryID, decimal price, int quantity ,string categoryName)
         {
@@ -23,6 +27,13 @@ namespace MiniShop.Models
             Price = price;
             Quantity = quantity;
             CategoryName= categoryName;
+        }
+        // Overloaded Constructor including Image Path and Image Object
+        public Product(int productID, string productName, int categoryID, decimal price, int quantity, string categoryName, string imagePath, Image? productImage = null)
+            : this(productID, productName, categoryID, price, quantity, categoryName)
+        {
+            ImagePath = imagePath;
+            ProductImage = productImage;
         }
     }
 }

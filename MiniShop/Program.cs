@@ -14,8 +14,9 @@ namespace MiniShop
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new LoginForm());
-            Application.Run(new Category_Management());
-            Application.Run(new Product_Management());​
+            //Application.Run(new MainDashboardForm());
+            //Application.Run(new Category_Management());
+            //Application.Run(new Product_Management());​
         }
     }
 }

@@ -7,15 +7,8 @@ namespace MiniShop.Forms
 {
     partial class MainDashboardForm
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -27,23 +20,14 @@ namespace MiniShop.Forms
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainDashboardForm));
             panelSideMenu = new Panel();
-            pbSaleHistory = new PictureBox();
-            pbSale = new PictureBox();
-            pbCustomer = new PictureBox();
-            pbCategory = new PictureBox();
-            pbProduct = new PictureBox();
-            pbDashboard = new PictureBox();
+            btnSaleReport = new Button();
+            btnSale = new Button();
             btnLogout = new Button();
             btnSaleHistory = new Button();
-            btnSale = new Button();
             btnCustomer = new Button();
             btnCategories = new Button();
             BtnProducts = new Button();
@@ -81,7 +65,6 @@ namespace MiniShop.Forms
             lblsales = new Label();
             pnlRecentCard = new Panel();
             recentTitle = new Label();
-            pnlTableHeaderRule = new Panel();
             tableLayoutPanel1 = new TableLayoutPanel();
             invoiceId = new Label();
             lblCustomer = new Label();
@@ -92,12 +75,6 @@ namespace MiniShop.Forms
             lblDateTransaction = new Label();
             lblAmountTransaction = new Label();
             panelSideMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pbSaleHistory).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbSale).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbCustomer).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbCategory).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbProduct).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbDashboard).BeginInit();
             panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picLogo).BeginInit();
             panelHeader.SuspendLayout();
@@ -121,15 +98,10 @@ namespace MiniShop.Forms
             // 
             // panelSideMenu
             // 
-            panelSideMenu.Controls.Add(pbSaleHistory);
-            panelSideMenu.Controls.Add(pbSale);
-            panelSideMenu.Controls.Add(pbCustomer);
-            panelSideMenu.Controls.Add(pbCategory);
-            panelSideMenu.Controls.Add(pbProduct);
-            panelSideMenu.Controls.Add(pbDashboard);
+            panelSideMenu.Controls.Add(btnSaleReport);
+            panelSideMenu.Controls.Add(btnSale);
             panelSideMenu.Controls.Add(btnLogout);
             panelSideMenu.Controls.Add(btnSaleHistory);
-            panelSideMenu.Controls.Add(btnSale);
             panelSideMenu.Controls.Add(btnCustomer);
             panelSideMenu.Controls.Add(btnCategories);
             panelSideMenu.Controls.Add(BtnProducts);
@@ -141,142 +113,83 @@ namespace MiniShop.Forms
             panelSideMenu.Size = new Size(220, 665);
             panelSideMenu.TabIndex = 0;
             // 
-            // pbSaleHistory
+            // btnSaleReport
             // 
-            pbSaleHistory.BackColor = SystemColors.Control;
-            pbSaleHistory.Image = (Image)resources.GetObject("pbSaleHistory.Image");
-            pbSaleHistory.Location = new Point(16, 333);
-            pbSaleHistory.Name = "pbSaleHistory";
-            pbSaleHistory.Size = new Size(22, 22);
-            pbSaleHistory.SizeMode = PictureBoxSizeMode.Zoom;
-            pbSaleHistory.TabIndex = 12;
-            pbSaleHistory.TabStop = false;
+            btnSaleReport.Dock = DockStyle.Top;
+            btnSaleReport.Location = new Point(0, 422);
+            btnSaleReport.Name = "btnSaleReport";
+            btnSaleReport.Size = new Size(220, 46);
+            btnSaleReport.TabIndex = 11;
+            btnSaleReport.Text = "  💳   Sale Report";
+            btnSaleReport.Click += btnSaleReport_Click;
             // 
-            // pbSale
+            // btnSale
             // 
-            pbSale.Image = (Image)resources.GetObject("pbSale.Image");
-            pbSale.Location = new Point(16, 287);
-            pbSale.Name = "pbSale";
-            pbSale.Size = new Size(22, 22);
-            pbSale.SizeMode = PictureBoxSizeMode.Zoom;
-            pbSale.TabIndex = 11;
-            pbSale.TabStop = false;
-            // 
-            // pbCustomer
-            // 
-            pbCustomer.Image = (Image)resources.GetObject("pbCustomer.Image");
-            pbCustomer.Location = new Point(16, 241);
-            pbCustomer.Name = "pbCustomer";
-            pbCustomer.Size = new Size(22, 22);
-            pbCustomer.SizeMode = PictureBoxSizeMode.Zoom;
-            pbCustomer.TabIndex = 10;
-            pbCustomer.TabStop = false;
-            // 
-            // pbCategory
-            // 
-            pbCategory.Image = (Image)resources.GetObject("pbCategory.Image");
-            pbCategory.Location = new Point(16, 195);
-            pbCategory.Name = "pbCategory";
-            pbCategory.Size = new Size(22, 22);
-            pbCategory.SizeMode = PictureBoxSizeMode.Zoom;
-            pbCategory.TabIndex = 9;
-            pbCategory.TabStop = false;
-            // 
-            // pbProduct
-            // 
-            pbProduct.Image = (Image)resources.GetObject("pbProduct.Image");
-            pbProduct.Location = new Point(16, 149);
-            pbProduct.Name = "pbProduct";
-            pbProduct.Size = new Size(22, 22);
-            pbProduct.SizeMode = PictureBoxSizeMode.Zoom;
-            pbProduct.TabIndex = 8;
-            pbProduct.TabStop = false;
-            // 
-            // pbDashboard
-            // 
-            pbDashboard.Image = (Image)resources.GetObject("pbDashboard.Image");
-            pbDashboard.Location = new Point(16, 103);
-            pbDashboard.Name = "pbDashboard";
-            pbDashboard.Size = new Size(22, 22);
-            pbDashboard.SizeMode = PictureBoxSizeMode.Zoom;
-            pbDashboard.TabIndex = 6;
-            pbDashboard.TabStop = false;
+            btnSale.Dock = DockStyle.Top;
+            btnSale.Location = new Point(0, 376);
+            btnSale.Name = "btnSale";
+            btnSale.Size = new Size(220, 46);
+            btnSale.TabIndex = 10;
+            btnSale.Text = "  💳   Sales / POS";
             // 
             // btnLogout
             // 
             btnLogout.Dock = DockStyle.Bottom;
             btnLogout.Location = new Point(0, 615);
             btnLogout.Name = "btnLogout";
-            btnLogout.Padding = new Padding(45, 0, 0, 0);
             btnLogout.Size = new Size(220, 50);
-            btnLogout.TabIndex = 7;
-            btnLogout.Text = "⎋  Logout";
+            btnLogout.TabIndex = 0;
+            btnLogout.Text = "  ⎋   Logout";
             btnLogout.Click += btnLogout_Click;
             // 
             // btnSaleHistory
             // 
             btnSaleHistory.Dock = DockStyle.Top;
-            btnSaleHistory.Location = new Point(0, 321);
+            btnSaleHistory.Location = new Point(0, 330);
             btnSaleHistory.Name = "btnSaleHistory";
-            btnSaleHistory.Padding = new Padding(45, 0, 0, 0);
             btnSaleHistory.Size = new Size(220, 46);
-            btnSaleHistory.TabIndex = 6;
-            btnSaleHistory.Text = "Sale History";
+            btnSaleHistory.TabIndex = 2;
+            btnSaleHistory.Text = "  📈   Sale History";
             btnSaleHistory.Click += btnSaleHistory_Click;
-            // 
-            // btnSale
-            // 
-            btnSale.Dock = DockStyle.Top;
-            btnSale.Location = new Point(0, 275);
-            btnSale.Name = "btnSale";
-            btnSale.Padding = new Padding(45, 0, 0, 0);
-            btnSale.Size = new Size(220, 46);
-            btnSale.TabIndex = 5;
-            btnSale.Text = "Sale / POS";
-            btnSale.Click += btnSale_Click;
             // 
             // btnCustomer
             // 
             btnCustomer.Dock = DockStyle.Top;
-            btnCustomer.Location = new Point(0, 229);
+            btnCustomer.Location = new Point(0, 284);
             btnCustomer.Name = "btnCustomer";
-            btnCustomer.Padding = new Padding(45, 0, 0, 0);
             btnCustomer.Size = new Size(220, 46);
-            btnCustomer.TabIndex = 4;
-            btnCustomer.Text = "Customers";
+            btnCustomer.TabIndex = 3;
+            btnCustomer.Text = "  👥   Customers";
             btnCustomer.Click += btnCustomer_Click;
             // 
             // btnCategories
             // 
             btnCategories.Dock = DockStyle.Top;
-            btnCategories.Location = new Point(0, 183);
+            btnCategories.Location = new Point(0, 238);
             btnCategories.Name = "btnCategories";
-            btnCategories.Padding = new Padding(45, 0, 0, 0);
             btnCategories.Size = new Size(220, 46);
-            btnCategories.TabIndex = 3;
-            btnCategories.Text = "Categories";
+            btnCategories.TabIndex = 4;
+            btnCategories.Text = "  🏷️   Categories";
             btnCategories.Click += btnCategories_Click;
             // 
             // BtnProducts
             // 
             BtnProducts.Dock = DockStyle.Top;
-            BtnProducts.Location = new Point(0, 137);
+            BtnProducts.Location = new Point(0, 192);
             BtnProducts.Name = "BtnProducts";
-            BtnProducts.Padding = new Padding(45, 0, 0, 0);
             BtnProducts.Size = new Size(220, 46);
-            BtnProducts.TabIndex = 2;
-            BtnProducts.Text = "Products";
+            BtnProducts.TabIndex = 5;
+            BtnProducts.Text = "  📦   Products";
             BtnProducts.Click += BtnProducts_Click;
             // 
             // btnDashboard
             // 
             btnDashboard.Dock = DockStyle.Top;
-            btnDashboard.Location = new Point(0, 91);
+            btnDashboard.Location = new Point(0, 146);
             btnDashboard.Name = "btnDashboard";
-            btnDashboard.Padding = new Padding(45, 0, 0, 0);
             btnDashboard.Size = new Size(220, 46);
-            btnDashboard.TabIndex = 1;
-            btnDashboard.Text = "Dashboard";
+            btnDashboard.TabIndex = 6;
+            btnDashboard.Text = "  📊   Dashboard";
             btnDashboard.Click += btnDashboard_Click;
             // 
             // panelLogo
@@ -286,25 +199,26 @@ namespace MiniShop.Forms
             panelLogo.Dock = DockStyle.Top;
             panelLogo.Location = new Point(0, 0);
             panelLogo.Name = "panelLogo";
-            panelLogo.Size = new Size(220, 91);
+            panelLogo.Size = new Size(220, 146);
             panelLogo.TabIndex = 0;
             // 
             // picLogo
             // 
             picLogo.Image = (Image)resources.GetObject("picLogo.Image");
-            picLogo.Location = new Point(92, 8);
+            picLogo.Location = new Point(78, 26);
             picLogo.Name = "picLogo";
-            picLogo.Size = new Size(36, 36);
+            picLogo.Size = new Size(76, 76);
             picLogo.SizeMode = PictureBoxSizeMode.Zoom;
             picLogo.TabIndex = 0;
             picLogo.TabStop = false;
             // 
             // lblAppName
             // 
-            lblAppName.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblAppName.Location = new Point(10, 48);
+            lblAppName.Dock = DockStyle.Bottom;
+            lblAppName.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            lblAppName.Location = new Point(0, 110);
             lblAppName.Name = "lblAppName";
-            lblAppName.Size = new Size(200, 20);
+            lblAppName.Size = new Size(220, 36);
             lblAppName.TabIndex = 1;
             lblAppName.Text = "SKINCARE MINI SHOP";
             lblAppName.TextAlign = ContentAlignment.MiddleCenter;
@@ -325,8 +239,8 @@ namespace MiniShop.Forms
             // lblTitle
             // 
             lblTitle.AutoSize = true;
-            lblTitle.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTitle.Location = new Point(28, 14);
+            lblTitle.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            lblTitle.Location = new Point(24, 12);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(231, 30);
             lblTitle.TabIndex = 0;
@@ -335,33 +249,33 @@ namespace MiniShop.Forms
             // lblSubtitle
             // 
             lblSubtitle.AutoSize = true;
-            lblSubtitle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblSubtitle.Location = new Point(30, 44);
+            lblSubtitle.Font = new Font("Segoe UI", 9F);
+            lblSubtitle.Location = new Point(25, 40);
             lblSubtitle.Name = "lblSubtitle";
             lblSubtitle.Size = new Size(266, 20);
-            lblSubtitle.TabIndex = 3;
+            lblSubtitle.TabIndex = 1;
             lblSubtitle.Text = "Welcome back, here's today's summary";
             // 
             // lblCurrentUser
             // 
             lblCurrentUser.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblCurrentUser.AutoSize = true;
-            lblCurrentUser.Font = new Font("Segoe UI", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblCurrentUser.Location = new Point(940, 20);
+            lblCurrentUser.Font = new Font("Segoe UI", 9.5F);
+            lblCurrentUser.Location = new Point(1020, 16);
             lblCurrentUser.Name = "lblCurrentUser";
             lblCurrentUser.Size = new Size(95, 21);
-            lblCurrentUser.TabIndex = 1;
+            lblCurrentUser.TabIndex = 2;
             lblCurrentUser.Text = "User: Admin";
             // 
             // lblDateTime
             // 
             lblDateTime.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblDateTime.AutoSize = true;
-            lblDateTime.Font = new Font("Segoe UI", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDateTime.Location = new Point(940, 42);
+            lblDateTime.Font = new Font("Segoe UI", 9.5F);
+            lblDateTime.Location = new Point(1020, 38);
             lblDateTime.Name = "lblDateTime";
             lblDateTime.Size = new Size(137, 21);
-            lblDateTime.TabIndex = 2;
+            lblDateTime.TabIndex = 3;
             lblDateTime.Text = "2026-09-25 15:00";
             // 
             // pnlHeaderDivider
@@ -378,7 +292,7 @@ namespace MiniShop.Forms
             panelMainContent.Dock = DockStyle.Fill;
             panelMainContent.Location = new Point(220, 72);
             panelMainContent.Name = "panelMainContent";
-            panelMainContent.Padding = new Padding(20);
+            panelMainContent.Padding = new Padding(24);
             panelMainContent.Size = new Size(1177, 593);
             panelMainContent.TabIndex = 2;
             // 
@@ -390,9 +304,9 @@ namespace MiniShop.Forms
             pnlSummary.Controls.Add(panelCardRecentSales);
             pnlSummary.Controls.Add(pnlRecentCard);
             pnlSummary.Dock = DockStyle.Fill;
-            pnlSummary.Location = new Point(20, 20);
+            pnlSummary.Location = new Point(24, 24);
             pnlSummary.Name = "pnlSummary";
-            pnlSummary.Size = new Size(1137, 553);
+            pnlSummary.Size = new Size(1129, 545);
             pnlSummary.TabIndex = 0;
             // 
             // panelCardProducts
@@ -402,222 +316,181 @@ namespace MiniShop.Forms
             panelCardProducts.Controls.Add(lblTotalProduct);
             panelCardProducts.Location = new Point(0, 0);
             panelCardProducts.Name = "panelCardProducts";
-            panelCardProducts.Size = new Size(265, 130);
+            panelCardProducts.Size = new Size(200, 100);
             panelCardProducts.TabIndex = 0;
             // 
             // pnlIconProducts
             // 
             pnlIconProducts.Controls.Add(houseIcon);
-            pnlIconProducts.Location = new Point(20, 18);
+            pnlIconProducts.Location = new Point(0, 0);
             pnlIconProducts.Name = "pnlIconProducts";
-            pnlIconProducts.Size = new Size(44, 44);
-            pnlIconProducts.TabIndex = 2;
+            pnlIconProducts.Size = new Size(200, 100);
+            pnlIconProducts.TabIndex = 0;
             // 
             // houseIcon
             // 
-            houseIcon.Image = (Image)resources.GetObject("houseIcon.Image");
-            houseIcon.Location = new Point(11, 11);
+            houseIcon.Location = new Point(0, 0);
             houseIcon.Name = "houseIcon";
-            houseIcon.Size = new Size(22, 22);
-            houseIcon.SizeMode = PictureBoxSizeMode.Zoom;
+            houseIcon.Size = new Size(100, 50);
             houseIcon.TabIndex = 0;
             houseIcon.TabStop = false;
             // 
             // lblTotalProducts
             // 
-            lblTotalProducts.Font = new Font("Segoe UI", 8.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTotalProducts.Location = new Point(20, 70);
+            lblTotalProducts.Location = new Point(0, 0);
             lblTotalProducts.Name = "lblTotalProducts";
-            lblTotalProducts.Size = new Size(225, 18);
-            lblTotalProducts.TabIndex = 0;
-            lblTotalProducts.Text = "TOTAL PRODUCTS";
-            lblTotalProducts.TextAlign = ContentAlignment.MiddleLeft;
+            lblTotalProducts.Size = new Size(100, 23);
+            lblTotalProducts.TabIndex = 1;
             // 
             // lblTotalProduct
             // 
-            lblTotalProduct.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTotalProduct.Location = new Point(20, 88);
+            lblTotalProduct.Location = new Point(0, 0);
             lblTotalProduct.Name = "lblTotalProduct";
-            lblTotalProduct.Size = new Size(225, 32);
-            lblTotalProduct.TabIndex = 1;
-            lblTotalProduct.Text = "0";
-            lblTotalProduct.TextAlign = ContentAlignment.MiddleLeft;
+            lblTotalProduct.Size = new Size(100, 23);
+            lblTotalProduct.TabIndex = 2;
             // 
             // panelCardCustomers
             // 
             panelCardCustomers.Controls.Add(pnlIconCustomers);
             panelCardCustomers.Controls.Add(lblTotalCustomers);
             panelCardCustomers.Controls.Add(lblTotalCustomer);
-            panelCardCustomers.Location = new Point(280, 0);
+            panelCardCustomers.Location = new Point(0, 0);
             panelCardCustomers.Name = "panelCardCustomers";
-            panelCardCustomers.Size = new Size(265, 130);
+            panelCardCustomers.Size = new Size(200, 100);
             panelCardCustomers.TabIndex = 1;
             // 
             // pnlIconCustomers
             // 
             pnlIconCustomers.Controls.Add(customerIcon);
-            pnlIconCustomers.Location = new Point(20, 18);
+            pnlIconCustomers.Location = new Point(0, 0);
             pnlIconCustomers.Name = "pnlIconCustomers";
-            pnlIconCustomers.Size = new Size(44, 44);
-            pnlIconCustomers.TabIndex = 3;
+            pnlIconCustomers.Size = new Size(200, 100);
+            pnlIconCustomers.TabIndex = 0;
             // 
             // customerIcon
             // 
-            customerIcon.Image = (Image)resources.GetObject("customerIcon.Image");
-            customerIcon.Location = new Point(11, 11);
+            customerIcon.Location = new Point(0, 0);
             customerIcon.Name = "customerIcon";
-            customerIcon.Size = new Size(22, 22);
-            customerIcon.SizeMode = PictureBoxSizeMode.Zoom;
+            customerIcon.Size = new Size(100, 50);
             customerIcon.TabIndex = 0;
             customerIcon.TabStop = false;
             // 
             // lblTotalCustomers
             // 
-            lblTotalCustomers.Font = new Font("Segoe UI", 8.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTotalCustomers.Location = new Point(20, 70);
+            lblTotalCustomers.Location = new Point(0, 0);
             lblTotalCustomers.Name = "lblTotalCustomers";
-            lblTotalCustomers.Size = new Size(225, 18);
-            lblTotalCustomers.TabIndex = 0;
-            lblTotalCustomers.Text = "TOTAL CUSTOMERS";
-            lblTotalCustomers.TextAlign = ContentAlignment.MiddleLeft;
+            lblTotalCustomers.Size = new Size(100, 23);
+            lblTotalCustomers.TabIndex = 1;
             // 
             // lblTotalCustomer
             // 
-            lblTotalCustomer.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTotalCustomer.Location = new Point(20, 88);
+            lblTotalCustomer.Location = new Point(0, 0);
             lblTotalCustomer.Name = "lblTotalCustomer";
-            lblTotalCustomer.Size = new Size(225, 32);
-            lblTotalCustomer.TabIndex = 1;
-            lblTotalCustomer.Text = "0";
-            lblTotalCustomer.TextAlign = ContentAlignment.MiddleLeft;
+            lblTotalCustomer.Size = new Size(100, 23);
+            lblTotalCustomer.TabIndex = 2;
             // 
             // panelCardSales
             // 
             panelCardSales.Controls.Add(pnlIconSales);
             panelCardSales.Controls.Add(lblTotalSales);
             panelCardSales.Controls.Add(lblTotalSale);
-            panelCardSales.Location = new Point(560, 0);
+            panelCardSales.Location = new Point(0, 0);
             panelCardSales.Name = "panelCardSales";
-            panelCardSales.Size = new Size(265, 130);
+            panelCardSales.Size = new Size(200, 100);
             panelCardSales.TabIndex = 2;
             // 
             // pnlIconSales
             // 
             pnlIconSales.Controls.Add(revenueIcon);
-            pnlIconSales.Location = new Point(20, 18);
+            pnlIconSales.Location = new Point(0, 0);
             pnlIconSales.Name = "pnlIconSales";
-            pnlIconSales.Size = new Size(44, 44);
-            pnlIconSales.TabIndex = 4;
+            pnlIconSales.Size = new Size(200, 100);
+            pnlIconSales.TabIndex = 0;
             // 
             // revenueIcon
             // 
-            revenueIcon.Image = (Image)resources.GetObject("revenueIcon.Image");
-            revenueIcon.Location = new Point(11, 11);
+            revenueIcon.Location = new Point(0, 0);
             revenueIcon.Name = "revenueIcon";
-            revenueIcon.Size = new Size(22, 22);
-            revenueIcon.SizeMode = PictureBoxSizeMode.Zoom;
+            revenueIcon.Size = new Size(100, 50);
             revenueIcon.TabIndex = 0;
             revenueIcon.TabStop = false;
             // 
             // lblTotalSales
             // 
-            lblTotalSales.Font = new Font("Segoe UI", 8.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTotalSales.Location = new Point(20, 70);
+            lblTotalSales.Location = new Point(0, 0);
             lblTotalSales.Name = "lblTotalSales";
-            lblTotalSales.Size = new Size(225, 18);
-            lblTotalSales.TabIndex = 0;
-            lblTotalSales.Text = "TOTAL REVENUE";
-            lblTotalSales.TextAlign = ContentAlignment.MiddleLeft;
+            lblTotalSales.Size = new Size(100, 23);
+            lblTotalSales.TabIndex = 1;
             // 
             // lblTotalSale
             // 
-            lblTotalSale.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTotalSale.Location = new Point(20, 88);
+            lblTotalSale.Location = new Point(0, 0);
             lblTotalSale.Name = "lblTotalSale";
-            lblTotalSale.Size = new Size(225, 32);
-            lblTotalSale.TabIndex = 1;
-            lblTotalSale.Text = "$0.00";
-            lblTotalSale.TextAlign = ContentAlignment.MiddleLeft;
+            lblTotalSale.Size = new Size(100, 23);
+            lblTotalSale.TabIndex = 2;
             // 
             // panelCardRecentSales
             // 
             panelCardRecentSales.Controls.Add(pnlIconRecent);
             panelCardRecentSales.Controls.Add(lblRecentTitle);
             panelCardRecentSales.Controls.Add(lblsales);
-            panelCardRecentSales.Location = new Point(840, 0);
+            panelCardRecentSales.Location = new Point(0, 0);
             panelCardRecentSales.Name = "panelCardRecentSales";
-            panelCardRecentSales.Size = new Size(265, 130);
+            panelCardRecentSales.Size = new Size(200, 100);
             panelCardRecentSales.TabIndex = 3;
             // 
             // pnlIconRecent
             // 
             pnlIconRecent.Controls.Add(pictureBox1);
-            pnlIconRecent.Location = new Point(20, 18);
+            pnlIconRecent.Location = new Point(0, 0);
             pnlIconRecent.Name = "pnlIconRecent";
-            pnlIconRecent.Size = new Size(44, 44);
-            pnlIconRecent.TabIndex = 5;
+            pnlIconRecent.Size = new Size(200, 100);
+            pnlIconRecent.TabIndex = 0;
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(11, 11);
+            pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(22, 22);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.Size = new Size(100, 50);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // lblRecentTitle
             // 
-            lblRecentTitle.Font = new Font("Segoe UI", 8.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblRecentTitle.Location = new Point(20, 70);
+            lblRecentTitle.Location = new Point(0, 0);
             lblRecentTitle.Name = "lblRecentTitle";
-            lblRecentTitle.Size = new Size(225, 18);
-            lblRecentTitle.TabIndex = 0;
-            lblRecentTitle.Text = "TODAY'S SALES";
-            lblRecentTitle.TextAlign = ContentAlignment.MiddleLeft;
+            lblRecentTitle.Size = new Size(100, 23);
+            lblRecentTitle.TabIndex = 1;
             // 
             // lblsales
             // 
-            lblsales.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblsales.Location = new Point(20, 88);
+            lblsales.Location = new Point(0, 0);
             lblsales.Name = "lblsales";
-            lblsales.Size = new Size(225, 32);
-            lblsales.TabIndex = 1;
-            lblsales.Text = "$0.00";
-            lblsales.TextAlign = ContentAlignment.MiddleLeft;
+            lblsales.Size = new Size(100, 23);
+            lblsales.TabIndex = 2;
             // 
             // pnlRecentCard
             // 
             pnlRecentCard.Controls.Add(recentTitle);
-            pnlRecentCard.Controls.Add(pnlTableHeaderRule);
             pnlRecentCard.Controls.Add(tableLayoutPanel1);
-            pnlRecentCard.Location = new Point(0, 150);
+            pnlRecentCard.Location = new Point(0, 0);
             pnlRecentCard.Name = "pnlRecentCard";
-            pnlRecentCard.Size = new Size(1105, 380);
+            pnlRecentCard.Size = new Size(200, 100);
             pnlRecentCard.TabIndex = 4;
             // 
             // recentTitle
             // 
             recentTitle.AutoSize = true;
-            recentTitle.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            recentTitle.Location = new Point(24, 18);
+            recentTitle.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            recentTitle.Location = new Point(20, 16);
             recentTitle.Name = "recentTitle";
             recentTitle.Size = new Size(188, 25);
             recentTitle.TabIndex = 0;
             recentTitle.Text = "Recent Transactions";
             // 
-            // pnlTableHeaderRule
-            // 
-            pnlTableHeaderRule.Location = new Point(24, 54);
-            pnlTableHeaderRule.Name = "pnlTableHeaderRule";
-            pnlTableHeaderRule.Size = new Size(1057, 2);
-            pnlTableHeaderRule.TabIndex = 1;
-            // 
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel1.CellBorderStyle = TableLayoutPanelCellBorderStyle.Inset;
             tableLayoutPanel1.ColumnCount = 4;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
@@ -631,103 +504,78 @@ namespace MiniShop.Forms
             tableLayoutPanel1.Controls.Add(lblCustomerTransaction, 1, 1);
             tableLayoutPanel1.Controls.Add(lblDateTransaction, 2, 1);
             tableLayoutPanel1.Controls.Add(lblAmountTransaction, 3, 1);
-            tableLayoutPanel1.Location = new Point(21, 79);
+            tableLayoutPanel1.Location = new Point(20, 52);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.Padding = new Padding(4, 0, 4, 0);
             tableLayoutPanel1.RowCount = 2;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 42F));
-            tableLayoutPanel1.Size = new Size(1060, 86);
-            tableLayoutPanel1.TabIndex = 2;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
+            tableLayoutPanel1.Size = new Size(200, 100);
+            tableLayoutPanel1.TabIndex = 1;
             // 
             // invoiceId
             // 
-            invoiceId.Dock = DockStyle.Fill;
-            invoiceId.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            invoiceId.Location = new Point(9, 2);
+            invoiceId.Location = new Point(3, 0);
             invoiceId.Name = "invoiceId";
-            invoiceId.Size = new Size(254, 38);
+            invoiceId.Size = new Size(44, 23);
             invoiceId.TabIndex = 0;
             invoiceId.Text = "Invoice ID";
-            invoiceId.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblCustomer
             // 
-            lblCustomer.Dock = DockStyle.Fill;
-            lblCustomer.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblCustomer.Location = new Point(271, 2);
+            lblCustomer.Location = new Point(53, 0);
             lblCustomer.Name = "lblCustomer";
-            lblCustomer.Size = new Size(254, 38);
+            lblCustomer.Size = new Size(44, 23);
             lblCustomer.TabIndex = 1;
             lblCustomer.Text = "Customer";
-            lblCustomer.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblDate
             // 
-            lblDate.Dock = DockStyle.Fill;
-            lblDate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDate.Location = new Point(533, 2);
+            lblDate.Location = new Point(103, 0);
             lblDate.Name = "lblDate";
-            lblDate.Size = new Size(254, 38);
+            lblDate.Size = new Size(44, 23);
             lblDate.TabIndex = 2;
             lblDate.Text = "Date";
-            lblDate.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblAmount
             // 
-            lblAmount.Dock = DockStyle.Fill;
-            lblAmount.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblAmount.Location = new Point(795, 2);
+            lblAmount.Location = new Point(153, 0);
             lblAmount.Name = "lblAmount";
-            lblAmount.Size = new Size(256, 38);
+            lblAmount.Size = new Size(44, 23);
             lblAmount.TabIndex = 3;
             lblAmount.Text = "Amount";
-            lblAmount.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblInvoiceTransaction
             // 
-            lblInvoiceTransaction.Dock = DockStyle.Fill;
-            lblInvoiceTransaction.Font = new Font("Segoe UI", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblInvoiceTransaction.Location = new Point(9, 42);
+            lblInvoiceTransaction.Location = new Point(3, 40);
             lblInvoiceTransaction.Name = "lblInvoiceTransaction";
-            lblInvoiceTransaction.Size = new Size(254, 42);
+            lblInvoiceTransaction.Size = new Size(44, 23);
             lblInvoiceTransaction.TabIndex = 4;
             lblInvoiceTransaction.Text = "#INV-001";
-            lblInvoiceTransaction.TextAlign = ContentAlignment.MiddleCenter;
             lblInvoiceTransaction.Click += lblInvoiceTransaction_Click;
             // 
             // lblCustomerTransaction
             // 
-            lblCustomerTransaction.Dock = DockStyle.Fill;
-            lblCustomerTransaction.Font = new Font("Segoe UI", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblCustomerTransaction.Location = new Point(271, 42);
+            lblCustomerTransaction.Location = new Point(53, 40);
             lblCustomerTransaction.Name = "lblCustomerTransaction";
-            lblCustomerTransaction.Size = new Size(254, 42);
+            lblCustomerTransaction.Size = new Size(44, 23);
             lblCustomerTransaction.TabIndex = 5;
             lblCustomerTransaction.Text = "Rosa";
-            lblCustomerTransaction.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblDateTransaction
             // 
-            lblDateTransaction.Dock = DockStyle.Fill;
-            lblDateTransaction.Font = new Font("Segoe UI", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDateTransaction.Location = new Point(533, 42);
+            lblDateTransaction.Location = new Point(103, 40);
             lblDateTransaction.Name = "lblDateTransaction";
-            lblDateTransaction.Size = new Size(254, 42);
+            lblDateTransaction.Size = new Size(44, 23);
             lblDateTransaction.TabIndex = 6;
             lblDateTransaction.Text = "24 Sep";
-            lblDateTransaction.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblAmountTransaction
             // 
-            lblAmountTransaction.Dock = DockStyle.Fill;
-            lblAmountTransaction.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblAmountTransaction.Location = new Point(795, 42);
+            lblAmountTransaction.Location = new Point(153, 40);
             lblAmountTransaction.Name = "lblAmountTransaction";
-            lblAmountTransaction.Size = new Size(256, 42);
+            lblAmountTransaction.Size = new Size(44, 23);
             lblAmountTransaction.TabIndex = 7;
             lblAmountTransaction.Text = "$25.00";
-            lblAmountTransaction.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // MainDashboardForm
             // 
@@ -741,12 +589,6 @@ namespace MiniShop.Forms
             Text = "MiniShop Dashboard";
             Load += MainDashboardForm_Load;
             panelSideMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pbSaleHistory).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbSale).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbCustomer).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbCategory).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbProduct).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbDashboard).EndInit();
             panelLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)picLogo).EndInit();
             panelHeader.ResumeLayout(false);
@@ -773,11 +615,124 @@ namespace MiniShop.Forms
 
         #endregion
 
-        /// <summary>
-        /// Applies the pink theme (matching the login screen) to the dashboard layout,
-        /// including rounded cards, circular icon badges and hover states.
-        /// Call this once, right after InitializeComponent(), e.g. in the form constructor.
-        /// </summary>
+        private void SetupCardInnerControls(
+            Panel iconBadge,
+            PictureBox icon,
+            Label lblTitle,
+            Label lblVal,
+            string titleText,
+            string valText)
+        {
+            // Icon circle
+            iconBadge.Size = new Size(40, 40);
+            iconBadge.Location = new Point(16, 14);
+
+            // Icon
+            icon.Size = new Size(22, 22);
+            icon.Location = new Point(9, 9);
+            icon.SizeMode = PictureBoxSizeMode.Zoom;
+            icon.BackColor = Color.Transparent;
+
+            // Title
+            lblTitle.Text = titleText;
+            lblTitle.Font = new Font("Segoe UI", 8.5F, FontStyle.Regular);
+            lblTitle.Location = new Point(16, 62);
+            lblTitle.Size = new Size(iconBadge.Parent.Width - 32, 20);
+            lblTitle.AutoSize = false;
+
+            // Value
+            lblVal.Text = valText;
+            lblVal.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            lblVal.Location = new Point(16, 82);
+            lblVal.Size = new Size(iconBadge.Parent.Width - 32, 30);
+            lblVal.AutoSize = false;
+        }
+        private void SetupDashboardIcons()
+        {
+            // Products
+            houseIcon.Paint -= HouseIcon_Paint;
+            houseIcon.Paint += HouseIcon_Paint;
+
+            // Customers
+            customerIcon.Paint -= CustomerIcon_Paint;
+            customerIcon.Paint += CustomerIcon_Paint;
+
+            // Revenue
+            revenueIcon.Paint -= RevenueIcon_Paint;
+            revenueIcon.Paint += RevenueIcon_Paint;
+
+            // Today's Sales
+            pictureBox1.Paint -= SalesIcon_Paint;
+            pictureBox1.Paint += SalesIcon_Paint;
+        }
+        private void HouseIcon_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+
+            using Pen pen = new Pen(Color.FromArgb(235, 87, 137), 2);
+
+            Point[] roof =
+            {
+                new Point(3, 10),
+                new Point(10, 3),
+                new Point(17, 10)
+            };
+
+            e.Graphics.DrawLines(pen, roof);
+            e.Graphics.DrawRectangle(pen, 6, 9, 8, 9);
+            e.Graphics.DrawRectangle(pen, 9, 13, 3, 5);
+        }
+
+        private void CustomerIcon_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+
+            using Pen pen = new Pen(Color.FromArgb(235, 87, 137), 2);
+
+            // First person
+            e.Graphics.DrawEllipse(pen, 2, 2, 6, 6);
+            e.Graphics.DrawArc(pen, 0, 9, 10, 8, 180, 180);
+
+            // Second person
+            e.Graphics.DrawEllipse(pen, 11, 3, 6, 6);
+            e.Graphics.DrawArc(pen, 9, 10, 10, 8, 180, 180);
+        }
+
+        private void RevenueIcon_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+
+            using Pen pen = new Pen(Color.FromArgb(235, 87, 137), 2);
+
+            e.Graphics.DrawLine(pen, 3, 18, 3, 4);
+            e.Graphics.DrawLine(pen, 3, 18, 19, 18);
+
+            Point[] line =
+            {
+                new Point(5, 14),
+                new Point(9, 10),
+                new Point(13, 12),
+                new Point(18, 5)
+            };
+
+            e.Graphics.DrawLines(pen, line);
+        }
+
+        private void SalesIcon_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+
+            using Pen pen = new Pen(Color.FromArgb(235, 87, 137), 2);
+
+            e.Graphics.DrawEllipse(pen, 2, 2, 16, 16);
+
+            e.Graphics.DrawString(
+                "$",
+                new Font("Segoe UI", 9F, FontStyle.Bold),
+                new SolidBrush(Color.FromArgb(235, 87, 137)),
+                new PointF(6, 2)
+            );
+        }
         private void ApplyCustomTheme()
         {
             Color pinkPrimary = Color.FromArgb(235, 87, 137);
@@ -790,7 +745,7 @@ namespace MiniShop.Forms
             Color textDark = Color.FromArgb(50, 50, 50);
             Color textMuted = Color.FromArgb(140, 130, 135);
 
-            // ---- Main backgrounds ----
+            // Backgrounds
             panelSideMenu.BackColor = pinkLightBg;
             panelLogo.BackColor = pinkLightBg;
             panelHeader.BackColor = Color.White;
@@ -798,20 +753,15 @@ namespace MiniShop.Forms
             pnlSummary.BackColor = Color.Transparent;
             pnlHeaderDivider.BackColor = pinkPrimary;
 
-            // ---- Logo / brand ----
+            // Header Texts
             lblAppName.ForeColor = pinkPrimary;
-            lblAppName.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            //lblAppTagline.ForeColor = textMuted;
-            //lblAppTagline.Font = new Font("Segoe UI", 7.5F, FontStyle.Italic);
-
-            // ---- Header text ----
             lblTitle.ForeColor = textDark;
             lblSubtitle.ForeColor = textMuted;
             lblCurrentUser.ForeColor = textDark;
             lblDateTime.ForeColor = textMuted;
 
-            // ---- Sidebar buttons ----
-            Button[] menuBtns = { btnDashboard, BtnProducts, btnCategories, btnCustomer, btnSale, btnSaleHistory };
+            // Navigation Buttons
+            Button[] menuBtns = { btnDashboard, BtnProducts, btnCategories, btnCustomer, btnSale, btnSaleHistory, btnSaleReport };
             foreach (var btn in menuBtns)
             {
                 btn.FlatStyle = FlatStyle.Flat;
@@ -821,6 +771,7 @@ namespace MiniShop.Forms
                 btn.ForeColor = textDark;
                 btn.BackColor = Color.Transparent;
                 btn.TextAlign = ContentAlignment.MiddleLeft;
+                btn.Padding = new Padding(16, 0, 0, 0);
                 btn.Cursor = Cursors.Hand;
             }
 
@@ -831,128 +782,150 @@ namespace MiniShop.Forms
             btnLogout.ForeColor = pinkPrimaryDark;
             btnLogout.BackColor = Color.Transparent;
             btnLogout.TextAlign = ContentAlignment.MiddleLeft;
+            btnLogout.Padding = new Padding(16, 0, 0, 0);
             btnLogout.Cursor = Cursors.Hand;
 
-            // Highlight the active menu button (Dashboard by default)
+            // Active Nav State
             SetActiveNavButton(btnDashboard);
 
-            // ---- Summary cards ----
+            // Cards Styling
             Panel[] cards = { panelCardProducts, panelCardCustomers, panelCardSales, panelCardRecentSales };
             foreach (var card in cards)
             {
                 card.BackColor = pinkCardBg;
-                RoundCorners(card, 14);
                 card.Paint -= Card_Paint;
                 card.Paint += Card_Paint;
             }
 
-            Panel[] badges = { pnlIconProducts, pnlIconCustomers, pnlIconSales, pnlIconRecent };
+            Panel[] badges =
+             {
+                pnlIconProducts,
+                pnlIconCustomers,
+                pnlIconSales,
+                pnlIconRecent
+            };
+
             foreach (var badge in badges)
             {
                 badge.BackColor = pinkBadgeBg;
+                badge.Size = new Size(40, 40);
                 MakeCircle(badge);
             }
 
             Label[] cardTitles = { lblTotalProducts, lblTotalCustomers, lblTotalSales, lblRecentTitle };
-            foreach (var title in cardTitles)
-            {
-                title.ForeColor = textMuted;
-            }
+            foreach (var title in cardTitles) title.ForeColor = textMuted;
 
             Label[] cardValues = { lblTotalProduct, lblTotalCustomer, lblTotalSale, lblsales };
-            foreach (var val in cardValues)
-            {
-                val.ForeColor = pinkPrimaryDark;
-            }
+            foreach (var val in cardValues) val.ForeColor = pinkPrimaryDark;
 
-            // ---- Recent transactions card ----
+            // Transactions Table Card
             pnlRecentCard.BackColor = Color.White;
-            RoundCorners(pnlRecentCard, 14);
             pnlRecentCard.Paint -= Card_Paint;
             pnlRecentCard.Paint += Card_Paint;
 
             recentTitle.ForeColor = textDark;
-            pnlTableHeaderRule.BackColor = borderSoft;
-            tableLayoutPanel1.BackColor = Color.White;
 
             Label[] tblHeaders = { invoiceId, lblCustomer, lblDate, lblAmount };
             foreach (var h in tblHeaders)
             {
-                h.ForeColor = textMuted;
+                h.Dock = DockStyle.Fill;
+                h.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+                h.BackColor = pinkBadgeBg;
+                h.ForeColor = pinkPrimaryDark;
+                h.TextAlign = ContentAlignment.MiddleCenter;
             }
 
             Label[] tblRows = { lblInvoiceTransaction, lblCustomerTransaction, lblDateTransaction, lblAmountTransaction };
+            Color zebra = Color.FromArgb(253, 247, 249);
             foreach (var r in tblRows)
             {
+                r.Dock = DockStyle.Fill;
+                r.Font = new Font("Segoe UI", 9.5F, FontStyle.Regular);
+                r.BackColor = zebra;
                 r.ForeColor = textDark;
+                r.TextAlign = ContentAlignment.MiddleCenter;
             }
             lblAmountTransaction.ForeColor = pinkPrimaryDark;
 
-            // Right-align the amount column (numbers read better right-aligned)
             lblAmount.TextAlign = ContentAlignment.MiddleRight;
             lblAmountTransaction.TextAlign = ContentAlignment.MiddleRight;
 
-            // Give the header row a light pink strip so it visually separates from data
-            invoiceId.BackColor = pinkBadgeBg;
-            lblCustomer.BackColor = pinkBadgeBg;
-            lblDate.BackColor = pinkBadgeBg;
-            lblAmount.BackColor = pinkBadgeBg;
-            foreach (var h in tblHeaders) h.ForeColor = pinkPrimaryDark;
-
-            // Give the data row a very faint tint so it doesn't blend into the white card
-            Color zebra = Color.FromArgb(253, 247, 249);
-            foreach (var r in tblRows) r.BackColor = zebra;
-
-            // Make cards resize responsively whenever the summary area changes size
+            // Resize Bindings
             pnlSummary.Resize -= PnlSummary_Resize;
             pnlSummary.Resize += PnlSummary_Resize;
             LayoutSummaryCards();
-        }
 
-        /// <summary>Highlights the given sidebar button as the active page and resets the rest.</summary>
-        private void SetActiveNavButton(Button active)
-        {
-            Color pinkPrimary = Color.FromArgb(235, 87, 137);
-            Button[] menuBtns = { btnDashboard, BtnProducts, btnCategories, btnCustomer, btnSale, btnSaleHistory };
-            foreach (var btn in menuBtns)
-            {
-                bool isActive = btn == active;
-                btn.BackColor = isActive ? pinkPrimary : Color.Transparent;
-                btn.ForeColor = isActive ? Color.White : Color.FromArgb(50, 50, 50);
-            }
-        }
+            // Setup dashboard cards
+            SetupCardInnerControls(
+                pnlIconProducts,
+                houseIcon,
+                lblTotalProducts,
+                lblTotalProduct,
+                "TOTAL PRODUCTS",
+                lblTotalProduct.Text
+            );
 
-        /// <summary>Keeps the four summary cards and the recent-transactions card evenly spaced as the window resizes.</summary>
+            SetupCardInnerControls(
+                pnlIconCustomers,
+                customerIcon,
+                lblTotalCustomers,
+                lblTotalCustomer,
+                "TOTAL CUSTOMERS",
+                lblTotalCustomer.Text
+            );
+
+            SetupCardInnerControls(
+                pnlIconSales,
+                revenueIcon,
+                lblTotalSales,
+                lblTotalSale,
+                "TOTAL REVENUE",
+                lblTotalSale.Text
+            );
+
+            SetupCardInnerControls(
+                pnlIconRecent,
+                pictureBox1,
+                lblRecentTitle,
+                lblsales,
+                "TODAY'S SALES",
+                lblsales.Text
+            );
+
+            SetupDashboardIcons();
+        }
         private void LayoutSummaryCards()
         {
-            int gap = 20;
-            int cardWidth = Math.Max(160, (pnlSummary.Width - gap * 3) / 4);
+            if (pnlSummary.Width <= 0) return;
+
+            int gap = 16;
+            int cardWidth = Math.Max(140, (pnlSummary.Width - (gap * 3)) / 4);
             int x = 0;
-            foreach (var card in new[] { panelCardProducts, panelCardCustomers, panelCardSales, panelCardRecentSales })
+
+            Panel[] cards = { panelCardProducts, panelCardCustomers, panelCardSales, panelCardRecentSales };
+            foreach (var card in cards)
             {
-                card.Size = new Size(cardWidth, 130);
+                card.Size = new Size(cardWidth, 125);
                 card.Location = new Point(x, 0);
+                RoundCorners(card, 12);
                 x += cardWidth + gap;
-                RoundCorners(card, 14);
             }
 
-            pnlRecentCard.Location = new Point(0, 150);
-            pnlRecentCard.Size = new Size(pnlSummary.Width, Math.Max(240, pnlSummary.Height - 150));
-            RoundCorners(pnlRecentCard, 14);
+            pnlRecentCard.Location = new Point(0, 141);
+            pnlRecentCard.Size = new Size(pnlSummary.Width, Math.Max(260, pnlSummary.Height - 141));
+            RoundCorners(pnlRecentCard, 12);
 
-            pnlTableHeaderRule.Width = pnlRecentCard.Width - 48;
-            tableLayoutPanel1.Width = pnlRecentCard.Width - 48;
+            tableLayoutPanel1.Width = pnlRecentCard.Width - 40;
         }
 
         private void PnlSummary_Resize(object sender, EventArgs e) => LayoutSummaryCards();
 
-        /// <summary>Clips a control to a rounded-rectangle region.</summary>
         private static void RoundCorners(Control c, int radius)
         {
             if (c.Width <= 0 || c.Height <= 0) return;
             int d = radius * 2;
             var rect = new Rectangle(0, 0, c.Width, c.Height);
-            var path = new GraphicsPath();
+            using var path = new GraphicsPath();
             path.AddArc(rect.X, rect.Y, d, d, 180, 90);
             path.AddArc(rect.Right - d, rect.Y, d, d, 270, 90);
             path.AddArc(rect.Right - d, rect.Bottom - d, d, d, 0, 90);
@@ -961,20 +934,18 @@ namespace MiniShop.Forms
             c.Region = new Region(path);
         }
 
-        /// <summary>Clips a square control to a perfect circle.</summary>
         private static void MakeCircle(Control c)
         {
             if (c.Width <= 0 || c.Height <= 0) return;
-            var path = new GraphicsPath();
+            using var path = new GraphicsPath();
             path.AddEllipse(0, 0, c.Width, c.Height);
             c.Region = new Region(path);
         }
 
-        /// <summary>Draws a soft 1px border to match each card's rounded region.</summary>
         private void Card_Paint(object sender, PaintEventArgs e)
         {
             var c = (Control)sender;
-            int radius = 14;
+            int radius = 12;
             int d = radius * 2;
             var rect = new Rectangle(0, 0, c.Width - 1, c.Height - 1);
             using var path = new GraphicsPath();
@@ -988,6 +959,7 @@ namespace MiniShop.Forms
             e.Graphics.DrawPath(pen, path);
         }
 
+        // Field Declarations
         private Panel panelSideMenu;
         private Panel panelLogo;
         private PictureBox picLogo;
@@ -996,7 +968,6 @@ namespace MiniShop.Forms
         private Button BtnProducts;
         private Button btnCategories;
         private Button btnCustomer;
-        private Button btnSale;
         private Button btnSaleHistory;
         private Button btnLogout;
 
@@ -1032,7 +1003,6 @@ namespace MiniShop.Forms
 
         private Panel pnlRecentCard;
         private Label recentTitle;
-        private Panel pnlTableHeaderRule;
         private TableLayoutPanel tableLayoutPanel1;
         private Label invoiceId;
         private Label lblCustomer;
@@ -1042,15 +1012,12 @@ namespace MiniShop.Forms
         private Label lblCustomerTransaction;
         private Label lblDateTransaction;
         private Label lblAmountTransaction;
-        private PictureBox pbSaleHistory;
-        private PictureBox pbSale;
-        private PictureBox pbCustomer;
-        private PictureBox pbCategory;
-        private PictureBox pbProduct;
-        private PictureBox pbDashboard;
+
         private PictureBox houseIcon;
         private PictureBox customerIcon;
         private PictureBox revenueIcon;
         private PictureBox pictureBox1;
+        private Button btnSale;
+        private Button btnSaleReport;
     }
 }
